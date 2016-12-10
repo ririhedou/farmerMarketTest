@@ -26,23 +26,24 @@ Copyright © 2016 Zhen Guo. All rights reserved.
 
                 <!-- Error messages will be shown here if any  -->
                 <p:messages id="msgs" showIcon="false"/>
-                <h:outputLabel id="form-error-message" class="errorMessages" value="#{farmManager.statusMessage}"/>
+                <h:outputLabel id="form-error-message" class="errorMessages" value="Error"/>
 
                 <h:form>
                     <div class="farmInfo">
+                        <!-->
                         <h:outputLabel class="heading" value="#{farmManager.selected.name} (#{farmManager.selected.abbreviation})"/>
                         <br/><br/>
                         <h:graphicImage id="farmImage" url="#{farmManager.selected.imageUrl}" />
                         <br/><br/>
                         <h:outputLabel class="heading" value="#{farmManager.selected.category} Farm"/>
                         <br/><br/>
-
-                        <h:outputText value="#{farmManager.selectedFarmDescription()}" styleClass="scrollableOutputText" />
+                        <-->  
+                        <h:outputText value="#{farmController.selected.city}" styleClass="scrollableOutputText" />
                         <br/>
                     </div>
                     
-                    <h:link outcome="VTFarms"><i class="fa fa-arrow-left"></i>&nbsp;Go Back&nbsp;&nbsp;</h:link>
-                    <h:commandLink action="#{farmManager.showOnMapFromFarmInfo()}"><i class="fa fa-map"></i>&nbsp;Show on Map</h:commandLink>
+                    <h:link outcome="FarmersMarkets"><i class="fa fa-arrow-left"></i>&nbsp;Go Back&nbsp;&nbsp;</h:link>
+                    <!--h:commandLink action="#{farmManager.showOnMapFromFarmInfo()}"><i class="fa fa-map"></i>&nbsp;Show on Map</h:commandLink-->
                 </h:form>
 
             </div>
