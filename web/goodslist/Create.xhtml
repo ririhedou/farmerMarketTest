@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="GoodslistCreateDlg" widgetVar="GoodslistCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateGoodslistTitle}">
+            <h:form id="GoodslistCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{goodslistController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateGoodslistLabel_glid}" for="glid" />
+                        <p:inputText id="glid" value="#{goodslistController.selected.glid}" title="#{bundle.CreateGoodslistTitle_glid}" required="true" requiredMessage="#{bundle.CreateGoodslistRequiredMessage_glid}"/>
+                        <p:outputLabel value="#{bundle.CreateGoodslistLabel_marketName}" for="marketName" />
+                        <p:inputText id="marketName" value="#{goodslistController.selected.marketName}" title="#{bundle.CreateGoodslistTitle_marketName}" required="true" requiredMessage="#{bundle.CreateGoodslistRequiredMessage_marketName}"/>
+                        <p:outputLabel value="#{bundle.CreateGoodslistLabel_website}" for="website" />
+                        <p:inputText id="website" value="#{goodslistController.selected.website}" title="#{bundle.CreateGoodslistTitle_website}" required="true" requiredMessage="#{bundle.CreateGoodslistRequiredMessage_website}"/>
+                        <p:outputLabel value="#{bundle.CreateGoodslistLabel_category}" for="category" />
+                        <p:inputText id="category" value="#{goodslistController.selected.category}" title="#{bundle.CreateGoodslistTitle_category}" required="true" requiredMessage="#{bundle.CreateGoodslistRequiredMessage_category}"/>
+                        <p:outputLabel value="#{bundle.CreateGoodslistLabel_GName}" for="GName" />
+                        <p:inputText id="GName" value="#{goodslistController.selected.GName}" title="#{bundle.CreateGoodslistTitle_GName}" required="true" requiredMessage="#{bundle.CreateGoodslistRequiredMessage_GName}"/>
+                        <p:outputLabel value="#{bundle.CreateGoodslistLabel_image}" for="image" />
+                        <p:inputText id="image" value="#{goodslistController.selected.image}" title="#{bundle.CreateGoodslistTitle_image}" required="true" requiredMessage="#{bundle.CreateGoodslistRequiredMessage_image}"/>
+                        <p:outputLabel value="#{bundle.CreateGoodslistLabel_price}" for="price" />
+                        <p:inputText id="price" value="#{goodslistController.selected.price}" title="#{bundle.CreateGoodslistTitle_price}" required="true" requiredMessage="#{bundle.CreateGoodslistRequiredMessage_price}"/>
+                        <p:outputLabel value="#{bundle.CreateGoodslistLabel_unit}" for="unit" />
+                        <p:inputText id="unit" value="#{goodslistController.selected.unit}" title="#{bundle.CreateGoodslistTitle_unit}" required="true" requiredMessage="#{bundle.CreateGoodslistRequiredMessage_unit}"/>
+                        <p:outputLabel value="#{bundle.CreateGoodslistLabel_fmid}" for="fmid" />
+                        <p:selectOneMenu id="fmid" value="#{goodslistController.selected.fmid}" required="true" requiredMessage="#{bundle.EditGoodslistRequiredMessage_fmid}">
+                            <f:selectItems value="#{farmController.itemsAvailableSelectOne}"
+                                           var="fmidItem"
+                                           itemValue="#{fmidItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateGoodslistLabel_gid}" for="gid" />
+                        <p:selectOneMenu id="gid" value="#{goodslistController.selected.gid}" required="true" requiredMessage="#{bundle.EditGoodslistRequiredMessage_gid}">
+                            <f:selectItems value="#{goodsController.itemsAvailableSelectOne}"
+                                           var="gidItem"
+                                           itemValue="#{gidItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{goodslistController.create}" value="#{bundle.Save}" update="display,:GoodslistListForm:datalist,:growl" oncomplete="handleSubmit(args,'GoodslistCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="GoodslistCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

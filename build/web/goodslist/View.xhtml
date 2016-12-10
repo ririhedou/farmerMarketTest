@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="GoodslistViewDlg" widgetVar="GoodslistViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewGoodslistTitle}">
+            <h:form id="GoodslistViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{goodslistController.selected != null}">
+                        <h:outputText value="#{bundle.ViewGoodslistLabel_glid}"/>
+                        <h:outputText value="#{goodslistController.selected.glid}" title="#{bundle.ViewGoodslistTitle_glid}"/>
+                        <h:outputText value="#{bundle.ViewGoodslistLabel_marketName}"/>
+                        <h:outputText value="#{goodslistController.selected.marketName}" title="#{bundle.ViewGoodslistTitle_marketName}"/>
+                        <h:outputText value="#{bundle.ViewGoodslistLabel_website}"/>
+                        <h:outputText value="#{goodslistController.selected.website}" title="#{bundle.ViewGoodslistTitle_website}"/>
+                        <h:outputText value="#{bundle.ViewGoodslistLabel_category}"/>
+                        <h:outputText value="#{goodslistController.selected.category}" title="#{bundle.ViewGoodslistTitle_category}"/>
+                        <h:outputText value="#{bundle.ViewGoodslistLabel_GName}"/>
+                        <h:outputText value="#{goodslistController.selected.GName}" title="#{bundle.ViewGoodslistTitle_GName}"/>
+                        <h:outputText value="#{bundle.ViewGoodslistLabel_image}"/>
+                        <h:outputText value="#{goodslistController.selected.image}" title="#{bundle.ViewGoodslistTitle_image}"/>
+                        <h:outputText value="#{bundle.ViewGoodslistLabel_price}"/>
+                        <h:outputText value="#{goodslistController.selected.price}" title="#{bundle.ViewGoodslistTitle_price}"/>
+                        <h:outputText value="#{bundle.ViewGoodslistLabel_unit}"/>
+                        <h:outputText value="#{goodslistController.selected.unit}" title="#{bundle.ViewGoodslistTitle_unit}"/>
+                        <h:outputText value="#{bundle.ViewGoodslistLabel_fmid}"/>
+                        <h:outputText value="#{goodslistController.selected.fmid}" title="#{bundle.ViewGoodslistTitle_fmid}"/>
+                        <h:outputText value="#{bundle.ViewGoodslistLabel_gid}"/>
+                        <h:outputText value="#{goodslistController.selected.gid}" title="#{bundle.ViewGoodslistTitle_gid}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="GoodslistViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

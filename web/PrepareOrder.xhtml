@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Created by Zhen Guo on 2016.11.03 
+Copyright © 2016 Zhen Guo. All rights reserved.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    
+    <!-- Do not enter tags before the composition line since they are ignored by JSF -->
+
+    <!-- This page is constructed based on the siteTemplate -->
+    <ui:composition template="template/siteTemplate.xhtml">
+        <ui:define name="title">
+            <!-- Set the page title -->
+            <h:outputText value="Prepare Order"></h:outputText>
+        </ui:define>
+        
+        <!-- Create the content for this page below -->
+        <ui:define name="editableContent">
+            <div align="center" style="width:50%; margin:0 auto;">
+
+                <h1>Welcome #{accountManager.selected.firstName} #{accountManager.selected.lastName}</h1>       
+                <h2>Create Your Own Pizza</h2>
+
+                <!-- Total Cost is recalculated right after the user selects a pizza size or adds a topping. -->
+                <h:outputText value="Total Cost: " styleClass="heading"/>
+                <h:outputText id="totalCostLabel" value="$#{priceManager.totalCost}" styleClass="heading"/>
+                <br /><br />
+                <h:form id="orderForm">
+                    <p:growl id="msgs" showDetail="true" />
+
+                    <p:accordionPanel>
+                        <p:tab title="Select Pizza Size and Crust">
+                            <p:panel id="sizeCrustPanel" styleClass=".ui-panel" >
+                                <h:panelGrid columns="2" cellpadding="5">
+
+                                    <p:outputLabel for="pizzaSize" value="Pizza Size: " styleClass="formItemText"/>
+                                    <p:selectOneMenu id="pizzaSize" value="#{priceManager.pizzaSize}" style="width:150px">
+                                        <p:ajax listener="#{priceManager.onSizeChange()}" update="meatsPricePanel,veggiesPricePanel,totalCostLabel" />
+                                        <p:ajax listener="#{priceManager.onCrustChange()}" update="crustPrice,totalCostLabel" />
+                                        <f:selectItems value="#{priceManager.pizzaSizes}" />
+                                    </p:selectOneMenu>
+
+                                    <p:outputLabel for="pizzaCrust" value="Crust Type: " styleClass="formItemText"/>    
+                                    <p:selectOneMenu id="pizzaCrust" value="#{priceManager.pizzaCrustType}" style="width:150px">
+                                        <p:ajax listener="#{priceManager.onCrustChange()}" update="crustPrice" />
+                                        <p:ajax listener="#{priceManager.onUserSelection()}" update="meatsPricePanel,veggiesPricePanel,totalCostLabel" />
+                                        <f:selectItems value="#{priceManager.pizzaCrusts}" />
+                                    </p:selectOneMenu>
+
+                                    <p:outputLabel  value="Crust Price: " styleClass="formItemText" />
+                                    <p:outputLabel  id = "crustPrice" value="$#{priceManager.pizzaCrustPrice}"  styleClass="formItemText"/>
+
+                                </h:panelGrid>
+                            </p:panel>
+                        </p:tab>
+                        <p:tab title="Select Meat Toppings">
+                            <p:panel id="meatsPricePanel" styleClass=".ui-panel" >
+                                <h:panelGrid columns="4" cellpadding="5">
+
+                                    <p:graphicImage name="images/meats/bacon.png" styleClass="toppingImage"/>
+                                    <h:outputText value="Bacon" styleClass="formItemText" />
+                                    <h:outputText value="$#{priceManager.priceOfBacon()}" styleClass="formItemText" />
+                                    <p:selectBooleanCheckbox value="#{priceManager.bacon}">
+                                        <p:ajax listener="#{priceManager.onUserSelection()}" update="totalCostLabel" />
+                                    </p:selectBooleanCheckbox>
+
+                                    <p:graphicImage name="images/meats/beef.png" styleClass="toppingImage"/>
+                                    <h:outputText value="Beef" styleClass="formItemText"/>
+                                    <h:outputText value="$#{priceManager.priceOfBeef()}" styleClass="formItemText" />
+                                    <p:selectBooleanCheckbox value="#{priceManager.beef}">
+                                        <p:ajax listener="#{priceManager.onUserSelection()}" update="totalCostLabel" />
+                                    </p:selectBooleanCheckbox>
+
+                                    <p:graphicImage name="images/meats/chicken.png" styleClass="toppingImage"/>
+                                    <h:outputText value="Chicken" styleClass="formItemText"/>
+                                    <h:outputText value="$#{priceManager.priceOfChicken()}" styleClass="formItemText" />
+                                    <p:selectBooleanCheckbox value="#{priceManager.chicken}">
+                                        <p:ajax listener="#{priceManager.onUserSelection()}" update="totalCostLabel" />
+                                    </p:selectBooleanCheckbox>
+
+                                    <p:graphicImage name="images/meats/ham.png" styleClass="toppingImage"/>
+                                    <h:outputText value="Ham" styleClass="formItemText"/>
+                                    <h:outputText value="$#{priceManager.priceOfHam()}" styleClass="formItemText" />
+                                    <p:selectBooleanCheckbox value="#{priceManager.ham}">
+                                        <p:ajax listener="#{priceManager.onUserSelection()}" update="totalCostLabel" />
+                                    </p:selectBooleanCheckbox>
+
+                                    <p:graphicImage name="images/meats/meatball.png" styleClass="toppingImage"/>
+                                    <h:outputText value="Meatball" styleClass="formItemText"/>
+                                    <h:outputText value="$#{priceManager.priceOfMeatball()}" styleClass="formItemText" />
+                                    <p:selectBooleanCheckbox value="#{priceManager.meatball}">
+                                        <p:ajax listener="#{priceManager.onUserSelection()}" update="totalCostLabel" />
+                                    </p:selectBooleanCheckbox>
+
+                                    <p:graphicImage name="images/meats/pepperoni.png" styleClass="toppingImage"/>
+                                    <h:outputText value="Pepperoni" styleClass="formItemText"/>
+                                    <h:outputText value="$#{priceManager.priceOfPepperoni()}" styleClass="formItemText" />
+                                    <p:selectBooleanCheckbox value="#{priceManager.pepperoni}">
+                                        <p:ajax listener="#{priceManager.onUserSelection()}" update="totalCostLabel" />
+                                    </p:selectBooleanCheckbox>
+
+                                    <p:graphicImage name="images/meats/pork.png" styleClass="toppingImage"/>
+                                    <h:outputText value="Pork" styleClass="formItemText"/>
+                                    <h:outputText value="$#{priceManager.priceOfPork()}" styleClass="formItemText" />
+                                    <p:selectBooleanCheckbox value="#{priceManager.pork}">
+                                        <p:ajax listener="#{priceManager.onUserSelection()}" update="totalCostLabel" />
+                                    </p:selectBooleanCheckbox>
+
+                                    <p:graphicImage name="images/meats/salami.png" styleClass="toppingImage"/>
+                                    <h:outputText value="Salami" styleClass="formItemText"/>
+                                    <h:outputText value="$#{priceManager.priceOfSalami()}" styleClass="formItemText" />
+                                    <p:selectBooleanCheckbox value="#{priceManager.salami}">
+                                        <p:ajax listener="#{priceManager.onUserSelection()}" update="totalCostLabel" />
+                                    </p:selectBooleanCheckbox>
+
+                                    <p:graphicImage name="images/meats/sausage.png" styleClass="toppingImage"/>
+                                    <h:outputText value="Sausage" styleClass="formItemText"/>
+                                    <h:outputText value="$#{priceManager.priceOfSausage()}" styleClass="formItemText" />
+                                    <p:selectBooleanCheckbox value="#{priceManager.sausage}">
+                                        <p:ajax listener="#{priceManager.onUserSelection()}" update="totalCostLabel" />
+                                    </p:selectBooleanCheckbox>
+                                </h:panelGrid>
+                            </p:panel>
+                        </p:tab>
+                        <p:tab title="Select Vegetable Toppings">
+                            <p:panel id="veggiesPricePanel" styleClass=".ui-panel" >
+                                <h:panelGrid columns="4" cellpadding="5">
+
+                                    <p:graphicImage name="images/veggies/bananaPeppers.png" styleClass="toppingImage"/>
+                                    <h:outputText value="Banana Peppers" styleClass="formItemText"/>
+                                    <h:outputText value="$#{priceManager.priceOfBananaPeppers()}" styleClass="formItemText" />
+                                    <p:selectBooleanCheckbox value="#{priceManager.bananaPeppers}">
+                                        <p:ajax listener="#{priceManager.onUserSelection()}" update="totalCostLabel" />
+                                    </p:selectBooleanCheckbox>
+
+                                    <p:graphicImage name="images/veggies/blackOlives.png" styleClass="toppingImage"/>
+                                    <h:outputText value="Black Olives" styleClass="formItemText"/>
+                                    <h:outputText value="$#{priceManager.priceOfBlackOlives()}" styleClass="formItemText" />
+                                    <p:selectBooleanCheckbox value="#{priceManager.blackOlives}">
+                                        <p:ajax listener="#{priceManager.onUserSelection()}" update="totalCostLabel" />
+                                    </p:selectBooleanCheckbox>
+
+                                    <p:graphicImage name="images/veggies/cherryPeppers.png" styleClass="toppingImage"/>
+                                    <h:outputText value="Cherry Peppers" styleClass="formItemText"/>
+                                    <h:outputText value="$#{priceManager.priceOfCherryPeppers()}" styleClass="formItemText" />
+                                    <p:selectBooleanCheckbox value="#{priceManager.cherryPeppers}">
+                                        <p:ajax listener="#{priceManager.onUserSelection()}" update="totalCostLabel" />
+                                    </p:selectBooleanCheckbox>                           
+
+                                    <p:graphicImage name="images/veggies/greenBellPeppers.png" styleClass="toppingImage"/>
+                                    <h:outputText value="Green Bell Peppers" styleClass="formItemText"/>
+                                    <h:outputText value="$#{priceManager.priceOfGreenBellPeppers()}" styleClass="formItemText" />
+                                    <p:selectBooleanCheckbox value="#{priceManager.greenBellPeppers}">
+                                        <p:ajax listener="#{priceManager.onUserSelection()}" update="totalCostLabel" />
+                                    </p:selectBooleanCheckbox>                           
+
+                                    <p:graphicImage name="images/veggies/jalapenoPeppers.png" styleClass="toppingImage"/>
+                                    <h:outputText value="Jalapeno Peppers" styleClass="formItemText"/>
+                                    <h:outputText value="$#{priceManager.priceOfJalapenoPeppers()}" styleClass="formItemText" />
+                                    <p:selectBooleanCheckbox value="#{priceManager.jalapenoPeppers}">
+                                        <p:ajax listener="#{priceManager.onUserSelection()}" update="totalCostLabel" />
+                                    </p:selectBooleanCheckbox>                           
+
+                                    <p:graphicImage name="images/veggies/mushrooms.png" styleClass="toppingImage"/>
+                                    <h:outputText value="Mushrooms" styleClass="formItemText"/>
+                                    <h:outputText value="$#{priceManager.priceOfMushrooms()}" styleClass="formItemText" />
+                                    <p:selectBooleanCheckbox value="#{priceManager.mushrooms}">
+                                        <p:ajax listener="#{priceManager.onUserSelection()}" update="totalCostLabel" />
+                                    </p:selectBooleanCheckbox>
+
+                                    <p:graphicImage name="images/veggies/pineapple.png" styleClass="toppingImage"/>
+                                    <h:outputText value="Pineapple" styleClass="formItemText"/>
+                                    <h:outputText value="$#{priceManager.priceOfPineapple()}" styleClass="formItemText" />
+                                    <p:selectBooleanCheckbox value="#{priceManager.pineapple}">
+                                        <p:ajax listener="#{priceManager.onUserSelection()}" update="totalCostLabel" />
+                                    </p:selectBooleanCheckbox>
+
+                                    <p:graphicImage name="images/veggies/redOnions.png" styleClass="toppingImage"/>
+                                    <h:outputText value="Red Onions" styleClass="formItemText"/>
+                                    <h:outputText value="$#{priceManager.priceOfRedOnions()}" styleClass="formItemText" />
+                                    <p:selectBooleanCheckbox value="#{priceManager.redOnions}">
+                                        <p:ajax listener="#{priceManager.onUserSelection()}" update="totalCostLabel" />
+                                    </p:selectBooleanCheckbox>
+
+                                    <p:graphicImage name="images/veggies/spinach.png" styleClass="toppingImage"/>
+                                    <h:outputText value="Spinach" styleClass="formItemText"/>
+                                    <h:outputText value="$#{priceManager.priceOfSpinach()}" styleClass="formItemText" />
+                                    <p:selectBooleanCheckbox value="#{priceManager.spinach}">
+                                        <p:ajax listener="#{priceManager.onUserSelection()}" update="totalCostLabel" />
+                                    </p:selectBooleanCheckbox>                          
+
+                                    <p:graphicImage name="images/veggies/tomatoes.png" styleClass="toppingImage"/>
+                                    <h:outputText value="Tomatoes" styleClass="formItemText"/>
+                                    <h:outputText value="$#{priceManager.priceOfTomatoes()}" styleClass="formItemText" />
+                                    <p:selectBooleanCheckbox value="#{priceManager.tomatoes}">
+                                        <p:ajax listener="#{priceManager.onUserSelection()}" update="totalCostLabel" />
+                                    </p:selectBooleanCheckbox>     
+
+                                </h:panelGrid>
+                            </p:panel>
+                        </p:tab>
+
+                    </p:accordionPanel>
+                    <br/>
+                    <!-- Reset all order data-->
+                    <p:commandButton value="Clear Order" update=":orderForm,totalCostLabel" icon="ui-icon-newwin"
+                                     action="#{priceManager.clearOrder}" />
+                    <p:spacer width="10" />
+                    <p:commandButton value="Place Order" update="msgs" icon="ui-icon-extlink"
+                                     action="#{priceManager.orderSubmitted}" />
+                </h:form>
+                <br/><br/>
+            </div>
+        </ui:define>
+    </ui:composition>
+    <!-- Do not enter tags after the composition line since they are ignored by JSF -->
+</html>
