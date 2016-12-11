@@ -26,26 +26,40 @@ Copyright © 2016 Zhen Guo. All rights reserved.
 
                 <!-- Error messages will be shown here if any  -->
                 <p:messages id="msgs" showIcon="false"/>
-                <h:outputLabel id="form-error-message" class="errorMessages" value="Error"/>
+                <h:outputLabel id="form-error-message" class="errorMessages" value="Farm Information"/>
 
                 <h:form>
                     <div class="farmInfo">
-                        <!-->
-                        <h:outputLabel class="heading" value="#{farmManager.selected.name} (#{farmManager.selected.abbreviation})"/>
+
+                        <h:outputLabel class="heading" value="Market Name: #{farmController.selected.marketName}"/>
+                        <br/><br/> 
+
+                        <h:outputLabel class="heading" value="WebSite: #{farmController.selected.website}"/>
+                        <br/><br/>   
+                        <h:outputLabel class="heading" value="#{farmController.selected.fmid} FMID"/>
                         <br/><br/>
-                        <h:graphicImage id="farmImage" url="#{farmManager.selected.imageUrl}" />
+
+                        <h:outputLabel class="heading" value="#{farmController.selected.x} X-axis"/>
                         <br/><br/>
-                        <h:outputLabel class="heading" value="#{farmManager.selected.category} Farm"/>
+                       
+                         <h:outputLabel class="heading" value="#{farmController.selected.y} Y-axis"/>
                         <br/><br/>
-                        <-->  
+                        
                         <h:outputText value="#{farmController.selected.city}" styleClass="scrollableOutputText" />
                         <br/>
                     </div>
-                    
+
                     <h:link outcome="FarmersMarkets"><i class="fa fa-arrow-left"></i>&nbsp;Go Back&nbsp;&nbsp;</h:link>
-                    <!--h:commandLink action="#{farmManager.showOnMapFromFarmInfo()}"><i class="fa fa-map"></i>&nbsp;Show on Map</h:commandLink-->
+                    <h:commandLink action="ShowOnMap.xhtml?faces-redirect=true" disabled="#{empty farmController.selected}">
+                        <i class="fa fa-map"></i>&nbsp;Show on Map
+                    </h:commandLink>
                 </h:form>
 
+                <p:commandButton id="viewButton"  icon="ui-icon-document" value="Buy" 
+                                 styleClass="commandButton"
+                                 disabled="">
+
+                </p:commandButton>              
             </div>
 
         </ui:define>
