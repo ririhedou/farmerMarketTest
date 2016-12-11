@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-Map to locate the farmer
+Map to locate the farmer.
 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -29,8 +29,19 @@ Map to locate the farmer
             -->
             <div align="center" style="width:97%">
                 <h:form >
+                    <h:outputLabel class="heading" value="Farmer Market: #{farmController.selected.marketName}"/>
+                    <br/><br/> 
+
+                     <h:outputLabel class="heading" value="Location:"/>
+                    <br/><br/>
+                    
+                    <h:outputLabel styleClass="scrollableOutputText" value="X-axis: #{farmController.selected.x}"/>
+                    <br/><br/>
+
+                    <h:outputLabel styleClass="scrollableOutputText"  value="Y-axis: #{farmController.selected.y}"/>
+                    <br/><br/>
                     <!--p:growl id="growl" showDetail="true" autoUpdate="true" life="4000"/-->
-                    <p:gmap center="37.2120, -80.4012" zoom="12" type="ROADMAP" style="width:800px;height:400px" model="#{markersView.advancedModel}">
+                    <p:gmap center="#{farmController.selected.y}, #{farmController.selected.x}" zoom="12" type="ROADMAP" style="width:800px;height:400px" model="#{markersView.advancedModel}">
                     </p:gmap>
                 </h:form>
             </div>
