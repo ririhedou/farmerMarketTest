@@ -25,8 +25,8 @@ Copyright © 2016 Zhen Guo. All rights reserved.
 
         <ui:define name="editableContent">
             <h:form>
-                <p:dataGrid var="res" value="" columns="3" layout="grid" rows="10" paginator="true" 
-                            id="movies"  rowsPerPageTemplate="10,20,30,40,50">
+                <p:dataGrid var="res" value="#{goodslistController.searchItems}" columns="3" layout="grid" rows="10" paginator="true" 
+                            id="goodslist"  rowsPerPageTemplate="10,20,30,40,50">
                 </p:dataGrid>             
             </h:form>
         </ui:define>
