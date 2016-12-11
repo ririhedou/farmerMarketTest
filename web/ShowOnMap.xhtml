@@ -1,33 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-Created by Osman Balci on 2016.07.30 
-Copyright © 2016 Osman Balci. All rights reserved.
+Map to locate the farmer
 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"   
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:p="http://primefaces.org/ui"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
 
     <!-- Do not enter tags before the composition line since they are ignored by JSF -->
 
     <!-- This page is constructed based on the siteTemplate -->
-    <ui:composition template="/template/siteTemplate.xhtml">
+    <ui:composition  template="/template/siteTemplate.xhtml">
         <ui:define name="title">
             <!-- Set the page title -->
             <h:outputText value="Map"></h:outputText>
         </ui:define>
 
+
         <!-- Create the content for this page below -->
-        <ui:define name="editableContent">
-
+        <ui:define name="editableContent" >
+            <!-- 
+            PrimeFaces gmap is used to display the VT campus Google map.
+            See http://www.primefaces.org/showcase/ui/data/gmap/basic.xhtml
             
-             <div id="map" class="map"></div>
-             <script type="text/javascript">
-                initializeMap();  // Initialize and display a Google Map of VT campus
-            </script>
-
+            The map is styled under class 'map' in siteStyles.css
+            -->
+            <div align="center" style="width:97%">
+                <h:form >
+                    <!--p:growl id="growl" showDetail="true" autoUpdate="true" life="4000"/-->
+                    <p:gmap center="37.2120, -80.4012" zoom="12" type="ROADMAP" style="width:800px;height:400px" model="#{markersView.advancedModel}">
+                    </p:gmap>
+                </h:form>
+            </div>
         </ui:define>
 
     </ui:composition>
