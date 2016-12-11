@@ -1,10 +1,11 @@
 /*
- * Created by Zhen Guo on 2016.12.10  * 
- * Copyright © 2016 Zhen Guo. All rights reserved. * 
+ * Created by Ke Tian on 2016.12.11  * 
+ * Copyright © 2016 Ke Tian. All rights reserved. * 
  */
 package market.mymarket.entityclasses;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -24,19 +25,19 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author ZG
+ * @author ketian
  */
 @Entity
-@Table(name = "goods")
+@Table(name = "Goods")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Goods.findAll", query = "SELECT g FROM Goods g")
-    , @NamedQuery(name = "Goods.findByGid", query = "SELECT g FROM Goods g WHERE g.gid = :gid")
-    , @NamedQuery(name = "Goods.findByGName", query = "SELECT g FROM Goods g WHERE g.gName = :gName")
-    , @NamedQuery(name = "Goods.findByImage", query = "SELECT g FROM Goods g WHERE g.image = :image")
-    , @NamedQuery(name = "Goods.findByPrice", query = "SELECT g FROM Goods g WHERE g.price = :price")
-    , @NamedQuery(name = "Goods.findByUnit", query = "SELECT g FROM Goods g WHERE g.unit = :unit")
-    , @NamedQuery(name = "Goods.findByCategory", query = "SELECT g FROM Goods g WHERE g.category = :category")})
+    @NamedQuery(name = "Goods.findAll", query = "SELECT g FROM Goods g"),
+    @NamedQuery(name = "Goods.findByGid", query = "SELECT g FROM Goods g WHERE g.gid = :gid"),
+    @NamedQuery(name = "Goods.findByGName", query = "SELECT g FROM Goods g WHERE g.gName = :gName"),
+    @NamedQuery(name = "Goods.findByImage", query = "SELECT g FROM Goods g WHERE g.image = :image"),
+    @NamedQuery(name = "Goods.findByPrice", query = "SELECT g FROM Goods g WHERE g.price = :price"),
+    @NamedQuery(name = "Goods.findByUnit", query = "SELECT g FROM Goods g WHERE g.unit = :unit"),
+    @NamedQuery(name = "Goods.findByCategory", query = "SELECT g FROM Goods g WHERE g.category = :category")})
 public class Goods implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -52,12 +53,14 @@ public class Goods implements Serializable {
     private String gName;
     @Basic(optional = false)
     @NotNull
+    @Size(min = 1, max = 8)
     @Column(name = "Image")
-    private int image;
+    private String image;
+    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Basic(optional = false)
     @NotNull
     @Column(name = "Price")
-    private int price;
+    private BigDecimal price;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 16)
@@ -65,11 +68,11 @@ public class Goods implements Serializable {
     private String unit;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 64)
+    @Size(min = 1, max = 16)
     @Column(name = "Category")
     private String category;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "gid")
-    private Collection<Goodslist> goodslistCollection;
+    private Collection<Goodslist> goodsListCollection;
 
     public Goods() {
     }
@@ -78,7 +81,7 @@ public class Goods implements Serializable {
         this.gid = gid;
     }
 
-    public Goods(Integer gid, String gName, int image, int price, String unit, String category) {
+    public Goods(Integer gid, String gName, String image, BigDecimal price, String unit, String category) {
         this.gid = gid;
         this.gName = gName;
         this.image = image;
@@ -103,19 +106,19 @@ public class Goods implements Serializable {
         this.gName = gName;
     }
 
-    public int getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setImage(int image) {
+    public void setImage(String image) {
         this.image = image;
     }
 
-    public int getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 
@@ -136,12 +139,12 @@ public class Goods implements Serializable {
     }
 
     @XmlTransient
-    public Collection<Goodslist> getGoodslistCollection() {
-        return goodslistCollection;
+    public Collection<Goodslist> getGoodsListCollection() {
+        return goodsListCollection;
     }
 
-    public void setGoodslistCollection(Collection<Goodslist> goodslistCollection) {
-        this.goodslistCollection = goodslistCollection;
+    public void setGoodsListCollection(Collection<Goodslist> goodsListCollection) {
+        this.goodsListCollection = goodsListCollection;
     }
 
     @Override

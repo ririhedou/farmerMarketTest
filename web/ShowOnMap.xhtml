@@ -43,6 +43,8 @@ Map to locate the farmer.
                     <!--p:growl id="growl" showDetail="true" autoUpdate="true" life="4000"/-->
                     <p:gmap center="#{farmController.selected.y}, #{farmController.selected.x}" zoom="12" type="ROADMAP" style="width:800px;height:400px" model="#{markersView.advancedModel}">
                     </p:gmap>
+                    
+                     <h:link outcome="MarketInfo"><i class="fa fa-arrow-left"></i>&nbsp;Go Back&nbsp;&nbsp;</h:link>
                 </h:form>
             </div>
         </ui:define>

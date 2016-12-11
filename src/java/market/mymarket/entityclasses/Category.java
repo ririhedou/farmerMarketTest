@@ -1,6 +1,6 @@
 /*
- * Created by Zhen Guo on 2016.12.10  * 
- * Copyright © 2016 Zhen Guo. All rights reserved. * 
+ * Created by Ke Tian on 2016.12.11  * 
+ * Copyright © 2016 Ke Tian. All rights reserved. * 
  */
 package market.mymarket.entityclasses;
 
@@ -22,15 +22,16 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author ZG
+ * @author ketian
  */
 @Entity
-@Table(name = "category")
+@Table(name = "Category")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Category.findAll", query = "SELECT c FROM Category c")
-    , @NamedQuery(name = "Category.findByCid", query = "SELECT c FROM Category c WHERE c.cid = :cid")
-    , @NamedQuery(name = "Category.findByCName", query = "SELECT c FROM Category c WHERE c.cName = :cName")})
+    @NamedQuery(name = "Category.findAll", query = "SELECT c FROM Category c"),
+    @NamedQuery(name = "Category.findByCid", query = "SELECT c FROM Category c WHERE c.cid = :cid"),
+    @NamedQuery(name = "Category.findByCName", query = "SELECT c FROM Category c WHERE c.cName = :cName"),
+    @NamedQuery(name = "Category.findByIcon", query = "SELECT c FROM Category c WHERE c.icon = :icon")})
 public class Category implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -41,9 +42,12 @@ public class Category implements Serializable {
     private Integer cid;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 64)
+    @Size(min = 1, max = 16)
     @Column(name = "CName")
     private String cName;
+    @Size(max = 32)
+    @Column(name = "Icon")
+    private String icon;
     @JoinColumn(name = "FMID", referencedColumnName = "FMID")
     @ManyToOne(optional = false)
     private Farm fmid;
@@ -74,6 +78,14 @@ public class Category implements Serializable {
 
     public void setCName(String cName) {
         this.cName = cName;
+    }
+
+    public String getIcon() {
+        return icon;
+    }
+
+    public void setIcon(String icon) {
+        this.icon = icon;
     }
 
     public Farm getFmid() {

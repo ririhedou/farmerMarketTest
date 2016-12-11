@@ -1,6 +1,6 @@
 /*
- * Created by Zhen Guo on 2016.12.10  * 
- * Copyright © 2016 Zhen Guo. All rights reserved. * 
+ * Created by Ke Tian on 2016.12.11  * 
+ * Copyright © 2016 Ke Tian. All rights reserved. * 
  */
 package market.mymarket.entityclasses;
 
@@ -23,35 +23,36 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author ZG
+ * @author ketian
  */
 @Entity
-@Table(name = "farm")
+@Table(name = "Farm")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Farm.findAll", query = "SELECT f FROM Farm f")
-    , @NamedQuery(name = "Farm.findByFmid", query = "SELECT f FROM Farm f WHERE f.fmid = :fmid")
-    , @NamedQuery(name = "Farm.findByMarketName", query = "SELECT f FROM Farm f WHERE f.marketName = :marketName")
-    , @NamedQuery(name = "Farm.findByWebsite", query = "SELECT f FROM Farm f WHERE f.website = :website")
-    , @NamedQuery(name = "Farm.findByFacebook", query = "SELECT f FROM Farm f WHERE f.facebook = :facebook")
-    , @NamedQuery(name = "Farm.findByStreet", query = "SELECT f FROM Farm f WHERE f.street = :street")
-    , @NamedQuery(name = "Farm.findByCity", query = "SELECT f FROM Farm f WHERE f.city = :city")
-    , @NamedQuery(name = "Farm.findByState", query = "SELECT f FROM Farm f WHERE f.state = :state")
-    , @NamedQuery(name = "Farm.findByZip", query = "SELECT f FROM Farm f WHERE f.zip = :zip")
-    , @NamedQuery(name = "Farm.findBySeason1Date", query = "SELECT f FROM Farm f WHERE f.season1Date = :season1Date")
-    , @NamedQuery(name = "Farm.findBySeason1Time", query = "SELECT f FROM Farm f WHERE f.season1Time = :season1Time")
-    , @NamedQuery(name = "Farm.findBySeason2Date", query = "SELECT f FROM Farm f WHERE f.season2Date = :season2Date")
-    , @NamedQuery(name = "Farm.findBySeason2Time", query = "SELECT f FROM Farm f WHERE f.season2Time = :season2Time")
-    , @NamedQuery(name = "Farm.findBySeason3Date", query = "SELECT f FROM Farm f WHERE f.season3Date = :season3Date")
-    , @NamedQuery(name = "Farm.findBySeason3Time", query = "SELECT f FROM Farm f WHERE f.season3Time = :season3Time")
-    , @NamedQuery(name = "Farm.findByX", query = "SELECT f FROM Farm f WHERE f.x = :x")
-    , @NamedQuery(name = "Farm.findByY", query = "SELECT f FROM Farm f WHERE f.y = :y")
-    , @NamedQuery(name = "Farm.findByCredit", query = "SELECT f FROM Farm f WHERE f.credit = :credit")
-    , @NamedQuery(name = "Farm.findByWic", query = "SELECT f FROM Farm f WHERE f.wic = :wic")
-    , @NamedQuery(name = "Farm.findByWICcash", query = "SELECT f FROM Farm f WHERE f.wICcash = :wICcash")
-    , @NamedQuery(name = "Farm.findBySfmnp", query = "SELECT f FROM Farm f WHERE f.sfmnp = :sfmnp")
-    , @NamedQuery(name = "Farm.findBySnap", query = "SELECT f FROM Farm f WHERE f.snap = :snap")
-    , @NamedQuery(name = "Farm.findByOrganic", query = "SELECT f FROM Farm f WHERE f.organic = :organic")})
+    @NamedQuery(name = "Farm.findAll", query = "SELECT f FROM Farm f"),
+    @NamedQuery(name = "Farm.findByFmid", query = "SELECT f FROM Farm f WHERE f.fmid = :fmid"),
+    @NamedQuery(name = "Farm.findByMarketName", query = "SELECT f FROM Farm f WHERE f.marketName = :marketName"),
+    @NamedQuery(name = "Farm.findByWebsite", query = "SELECT f FROM Farm f WHERE f.website = :website"),
+    @NamedQuery(name = "Farm.findByFacebook", query = "SELECT f FROM Farm f WHERE f.facebook = :facebook"),
+    @NamedQuery(name = "Farm.findByStreet", query = "SELECT f FROM Farm f WHERE f.street = :street"),
+    @NamedQuery(name = "Farm.findByCity", query = "SELECT f FROM Farm f WHERE f.city = :city"),
+    @NamedQuery(name = "Farm.findByState", query = "SELECT f FROM Farm f WHERE f.state = :state"),
+    @NamedQuery(name = "Farm.findByZip", query = "SELECT f FROM Farm f WHERE f.zip = :zip"),
+    @NamedQuery(name = "Farm.findBySeason1Date", query = "SELECT f FROM Farm f WHERE f.season1Date = :season1Date"),
+    @NamedQuery(name = "Farm.findBySeason1Time", query = "SELECT f FROM Farm f WHERE f.season1Time = :season1Time"),
+    @NamedQuery(name = "Farm.findBySeason2Date", query = "SELECT f FROM Farm f WHERE f.season2Date = :season2Date"),
+    @NamedQuery(name = "Farm.findBySeason2Time", query = "SELECT f FROM Farm f WHERE f.season2Time = :season2Time"),
+    @NamedQuery(name = "Farm.findBySeason3Date", query = "SELECT f FROM Farm f WHERE f.season3Date = :season3Date"),
+    @NamedQuery(name = "Farm.findBySeason3Time", query = "SELECT f FROM Farm f WHERE f.season3Time = :season3Time"),
+    @NamedQuery(name = "Farm.findByX", query = "SELECT f FROM Farm f WHERE f.x = :x"),
+    @NamedQuery(name = "Farm.findByY", query = "SELECT f FROM Farm f WHERE f.y = :y"),
+    @NamedQuery(name = "Farm.findByCredit", query = "SELECT f FROM Farm f WHERE f.credit = :credit"),
+    @NamedQuery(name = "Farm.findByWic", query = "SELECT f FROM Farm f WHERE f.wic = :wic"),
+    @NamedQuery(name = "Farm.findByWICcash", query = "SELECT f FROM Farm f WHERE f.wICcash = :wICcash"),
+    @NamedQuery(name = "Farm.findBySfmnp", query = "SELECT f FROM Farm f WHERE f.sfmnp = :sfmnp"),
+    @NamedQuery(name = "Farm.findBySnap", query = "SELECT f FROM Farm f WHERE f.snap = :snap"),
+    @NamedQuery(name = "Farm.findByOrganic", query = "SELECT f FROM Farm f WHERE f.organic = :organic"),
+    @NamedQuery(name = "Farm.findByRating", query = "SELECT f FROM Farm f WHERE f.rating = :rating")})
 public class Farm implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -62,57 +63,51 @@ public class Farm implements Serializable {
     private Integer fmid;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 30)
+    @Size(min = 1, max = 64)
     @Column(name = "MarketName")
     private String marketName;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 43)
+    @Size(max = 64)
     @Column(name = "Website")
     private String website;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 72)
+    @Size(max = 128)
     @Column(name = "Facebook")
     private String facebook;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 34)
+    @Size(min = 1, max = 64)
     @Column(name = "street")
     private String street;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 14)
+    @Size(min = 1, max = 16)
     @Column(name = "city")
     private String city;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 8)
+    @Size(min = 1, max = 16)
     @Column(name = "State")
     private String state;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 5)
+    @Size(min = 1, max = 8)
     @Column(name = "zip")
     private String zip;
-    @Size(max = 24)
+    @Size(max = 32)
     @Column(name = "Season1Date")
     private String season1Date;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 42)
+    @Size(max = 256)
     @Column(name = "Season1Time")
     private String season1Time;
-    @Size(max = 24)
+    @Size(max = 32)
     @Column(name = "Season2Date")
     private String season2Date;
-    @Size(max = 42)
+    @Size(max = 64)
     @Column(name = "Season2Time")
     private String season2Time;
-    @Size(max = 24)
+    @Size(max = 32)
     @Column(name = "Season3Date")
     private String season3Date;
-    @Size(max = 22)
+    @Size(max = 64)
     @Column(name = "Season3Time")
     private String season3Time;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
@@ -124,40 +119,30 @@ public class Farm implements Serializable {
     @NotNull
     @Column(name = "y")
     private BigDecimal y;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 1)
+    @Size(max = 1)
     @Column(name = "Credit")
     private String credit;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 1)
+    @Size(max = 1)
     @Column(name = "WIC")
     private String wic;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 1)
+    @Size(max = 1)
     @Column(name = "WICcash")
     private String wICcash;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 1)
+    @Size(max = 1)
     @Column(name = "SFMNP")
     private String sfmnp;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 1)
+    @Size(max = 1)
     @Column(name = "SNAP")
     private String snap;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 1)
+    @Size(max = 1)
     @Column(name = "Organic")
     private String organic;
+    @Column(name = "Rating")
+    private BigDecimal rating;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "fmid")
     private Collection<Category> categoryCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "fmid")
-    private Collection<Goodslist> goodslistCollection;
+    private Collection<Goodslist> goodsListCollection;
 
     public Farm() {
     }
@@ -166,24 +151,15 @@ public class Farm implements Serializable {
         this.fmid = fmid;
     }
 
-    public Farm(Integer fmid, String marketName, String website, String facebook, String street, String city, String state, String zip, String season1Time, BigDecimal x, BigDecimal y, String credit, String wic, String wICcash, String sfmnp, String snap, String organic) {
+    public Farm(Integer fmid, String marketName, String street, String city, String state, String zip, BigDecimal x, BigDecimal y) {
         this.fmid = fmid;
         this.marketName = marketName;
-        this.website = website;
-        this.facebook = facebook;
         this.street = street;
         this.city = city;
         this.state = state;
         this.zip = zip;
-        this.season1Time = season1Time;
         this.x = x;
         this.y = y;
-        this.credit = credit;
-        this.wic = wic;
-        this.wICcash = wICcash;
-        this.sfmnp = sfmnp;
-        this.snap = snap;
-        this.organic = organic;
     }
 
     public Integer getFmid() {
@@ -362,6 +338,14 @@ public class Farm implements Serializable {
         this.organic = organic;
     }
 
+    public BigDecimal getRating() {
+        return rating;
+    }
+
+    public void setRating(BigDecimal rating) {
+        this.rating = rating;
+    }
+
     @XmlTransient
     public Collection<Category> getCategoryCollection() {
         return categoryCollection;
@@ -372,12 +356,12 @@ public class Farm implements Serializable {
     }
 
     @XmlTransient
-    public Collection<Goodslist> getGoodslistCollection() {
-        return goodslistCollection;
+    public Collection<Goodslist> getGoodsListCollection() {
+        return goodsListCollection;
     }
 
-    public void setGoodslistCollection(Collection<Goodslist> goodslistCollection) {
-        this.goodslistCollection = goodslistCollection;
+    public void setGoodsListCollection(Collection<Goodslist> goodsListCollection) {
+        this.goodsListCollection = goodsListCollection;
     }
 
     @Override
