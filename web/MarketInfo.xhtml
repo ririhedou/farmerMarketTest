@@ -8,7 +8,8 @@ Copyright © 2016 Zhen Guo. All rights reserved.
 <html xmlns="http://www.w3.org/1999/xhtml"   
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <!-- Do not enter tags before the composition line since they are ignored by JSF -->
 
@@ -41,10 +42,10 @@ Copyright © 2016 Zhen Guo. All rights reserved.
 
                         <h:outputLabel class="heading" value="#{farmController.selected.x} X-axis"/>
                         <br/><br/>
-                       
-                         <h:outputLabel class="heading" value="#{farmController.selected.y} Y-axis"/>
+
+                        <h:outputLabel class="heading" value="#{farmController.selected.y} Y-axis"/>
                         <br/><br/>
-                        
+
                         <h:outputText value="#{farmController.selected.city}" styleClass="scrollableOutputText" />
                         <br/>
                     </div>
@@ -55,9 +56,15 @@ Copyright © 2016 Zhen Guo. All rights reserved.
                     </h:commandLink>
                 </h:form>
 
+                <p:inputText id="keyword" value="#{goodslistController.searchID}" 
+                             required="true" requiredMessage="Please enter a search ID!">
+                    <f:validateLength minimum="2" />
+                </p:inputText>
+                
                 <p:commandButton id="viewButton"  icon="ui-icon-document" value="Buy" 
-                                 styleClass="commandButton"
-                                 disabled="">
+                                 styleClass="commandButton" actionListener="#{goodslistController.search}"
+                                 >
+
 
                 </p:commandButton>              
             </div>

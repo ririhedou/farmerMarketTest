@@ -226,6 +226,7 @@ public class GoodslistController implements Serializable {
         // Farmer's Market ID equals to FarmController.selected.fmid
         return getFacade().fmidQuery(searchID);
     }
+     
     
     /**
      * @SessionScoped enables to preserve the values of the instance variables for the SearchResults.xhtml page to access.

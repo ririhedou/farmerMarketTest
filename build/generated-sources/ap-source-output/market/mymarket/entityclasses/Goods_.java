@@ -7,7 +7,7 @@ import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 import market.mymarket.entityclasses.Goodslist;
 
-@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2016-12-11T12:41:55")
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2016-12-11T14:05:48")
 @StaticMetamodel(Goods.class)
 public class Goods_ { 
 
