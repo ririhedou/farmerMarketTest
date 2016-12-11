@@ -99,8 +99,9 @@ public class GoodslistFacade extends AbstractFacade<Goodslist> {
      * @param searchID contains the search string the user entered for searching company names
      * @return A list of Company object references as the search results
      */
-    public List<Goodslist> fmidQuery(int searchID) {
+    public List<Goodslist> fmidQuery(Integer searchID) {
         // Conduct the search in a case-insensitive manner and return the results in a list.
+        //return getEntityManager().createQuery("SELECT c FROM Goodslist c WHERE c.fmid = 1002815").getResultList();
         return getEntityManager().createQuery("SELECT c FROM Goodslist c WHERE c.fmid = :searchID").setParameter("searchID", searchID).getResultList();
     }
 }

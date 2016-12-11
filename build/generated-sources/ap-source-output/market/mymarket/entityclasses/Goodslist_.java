@@ -9,7 +9,7 @@ import market.mymarket.entityclasses.Cart;
 import market.mymarket.entityclasses.Farm;
 import market.mymarket.entityclasses.Goods;
 
-@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2016-12-11T14:55:39")
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2016-12-11T16:27:39")
 @StaticMetamodel(Goodslist.class)
 public class Goodslist_ { 
 

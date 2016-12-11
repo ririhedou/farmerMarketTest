@@ -40,7 +40,7 @@ public class GoodslistController implements Serializable {
     -------------------------------
      */
     // searchID refers to FMID for searching all 
-    private int searchID;
+    private Integer searchID;
 
     /*
     ejbFacade is a reference (pointer) to an object that belongs to the GoodslistFacade class. 
@@ -71,11 +71,11 @@ public class GoodslistController implements Serializable {
     Getter and Setter Methods
     -------------------------
      */
-    public int getSearchID() {
+    public Integer getSearchID() {
         return searchID;
     }
 
-    public void setSearchID(int searchID) {
+    public void setSearchID(Integer searchID) {
         this.searchID = searchID;
     }
     

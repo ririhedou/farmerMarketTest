@@ -15,24 +15,20 @@ Copyright © 2016 Zhen Guo. All rights reserved.
     <!-- Do not enter tags before the composition line since they are ignored by JSF -->
 
     <!-- This page is constructed based on the siteTemplate -->
-    <ui:composition template="/template/siteTemplate.xhtml">
-        <ui:define name="title">
-            <!-- Set the page title -->
-            <h:outputText value="GoodsList"></h:outputText>
-        </ui:define>
-
-        <!-- Create the content for this page below -->
-
-        <ui:define name="editableContent">
-            <h:form>
-                <p:dataGrid var="res" value="#{goodslistController.searchItems}" columns="3" layout="grid" rows="10" paginator="true" 
-                            id="goodslist"  rowsPerPageTemplate="10,20,30,40,50">
-                </p:dataGrid>             
-            </h:form>
-        </ui:define>
 
 
-    </ui:composition>
-    <!-- Do not enter tags after the composition line since they are ignored by JSF ui-icon ui-icon-extlink-->
+    <h:outputLabel class="heading" value="#{goodslistController.searchID} X-axis"/>
+    <br/><br/>
+
+    <p:dataTable var="car" value="#{goodslistController.searchItems}">
+        <p:column headerText="Id">
+            <h:outputText value="#{goodslistController.searchID}" />
+        </p:column>
+    </p:dataTable>   
+
+
+
+
+
 
 </html>

@@ -56,17 +56,18 @@ Copyright © 2016 Zhen Guo. All rights reserved.
                     </h:commandLink>
                 </h:form>
 
-                <p:inputText id="keyword" value="#{goodslistController.searchID}" 
+                <p:inputText id="keyword" value="#{goodslistController.setSearchID(1002815)}" 
                              required="true" requiredMessage="Please enter a search ID!">
-                    <f:validateLength minimum="2" />
                 </p:inputText>
                 
+                
+
                 <p:commandButton id="viewButton"  icon="ui-icon-document" value="Buy" 
-                                 styleClass="commandButton" actionListener="#{goodslistController.search}"
-                                 >
+                                 styleClass="commandButton" 
+                                 action ="GoodsList.xhtml?faces-redirect=true"
+                />
 
 
-                </p:commandButton>              
             </div>
 
         </ui:define>
