@@ -2,6 +2,7 @@
 <!--
 Created by Zhen Guo on 2016.11.11 
 Copyright © 2016 Zhen Guo. All rights reserved.
+ke added thr js function
 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -31,10 +32,17 @@ Copyright © 2016 Zhen Guo. All rights reserved.
                 as an overlay. The following will display the messages for 5 seconds and then fade away.
                 -->
                 <h:outputText value="#{item.marketName}" />
-                <h:form id="form">
-                    <h:outputLabel class="heading" value="Farmer FMID: #{goodslistController.searchID}"/>
-                    <br/><br/>
+                <!--h:form id="form"-->
+                    <h:outputLabel class="heading" value="Farmer FMID: #{goodslistController.searchID}&nbsp;&nbsp;&nbsp;&nbsp;"/>
+                    <br/>
+                    <p:button  onclick="showSummary()" value="Cart Summary &nbsp;&nbsp;" icon="ui-icon-star"></p:button>
                     
+                    <p:button  onclick="deleteCart()" value="Delete Cart &nbsp;&nbsp;" icon="ui-icon-star"></p:button>
+                    
+                     <h:link outcome="index"><i class="fa fa-arrow-right"></i>&nbsp;CheckOut&nbsp;&nbsp;</h:link>
+                    <br/>
+                    <br/>
+
                     <p:dataGrid var="item" value="#{goodslistController.searchItems}" columns="3" layout="grid"
                                 rows="10" paginator="true" id="products"  rowsPerPageTemplate="20,30,40,50" >
 
@@ -49,26 +57,53 @@ Copyright © 2016 Zhen Guo. All rights reserved.
                                 <h:panelGrid columns="2" style="float:left">
                                     <h:graphicImage name="/images/farmgoods/goods#{item.gid}.jpg" height="120px" style="float:left"/>
 
-                                    <h:panelGrid columns="1" style="float:left">
+                                    <h:panelGrid  columns="1" style="float:left">
                                         <h:outputText value="Name: #{item.GName}" />
                                         <h:outputText value="Price: $#{item.price}"/>
                                         <h:outputText value="Category: #{item.category}"/>
                                         <h:outputText value="Unit: #{item.unit}"/>
+                                        <p:button icon="ui-icon-star" value="Add to cart" onclick="addGoods(#{item.gid})"></p:button>    
+
                                     </h:panelGrid>
                                     <!--p:selectBooleanCheckbox value="#{selectBooleanView.value1}" /-->
                                 </h:panelGrid>
-                                
-                                <h:panelGrid columns="2" style="float:center">
-                                <h:outputText value="Add to cart: " />
-                                <p:selectBooleanCheckbox value="" />    
-                                </h:panelGrid>
-                               
+
+
+
                             </h:panelGrid>
                         </p:panel>
 
-                    </p:dataGrid>     
-                </h:form>
-
+                    </p:dataGrid> 
+                <!--/h:form-->
+                <script type="text/javascript">
+                    function addGoods(item)
+                    {
+                        var selectedGoods = localStorage.getItem('cart');
+                        if (selectedGoods)
+                        {
+                          selectedGoods = selectedGoods + "  " + item.toString();   
+                          localStorage.setItem('cart',selectedGoods);
+                          
+                        }
+                        else
+                        {
+                            selectedGoods = item.toString();
+                            localStorage.setItem('cart',selectedGoods);
+                        }
+                        
+                        alert("You add this item ID: " + item.toString() + " to the Cart");
+                        
+                    }
+                    function deleteCart()
+                    {
+                        localStorage.removeItem('cart');
+                    }
+                    function showSummary()
+                    {
+                        var selectedGoods = localStorage.getItem('cart');
+                        alert("Cart Summary: " +selectedGoods.toString());
+                    }
+                </script>
             </div>
         </ui:define>              
     </ui:composition>
