@@ -46,10 +46,21 @@ Copyright © 2016 Zhen Guo. All rights reserved.
                         <h:outputLabel class="heading" value="#{farmController.selected.y} Y-axis"/>
                         <br/><br/>
 
+                        <h:outputLabel class="heading" value="Facebook: #{farmController.selected.facebook}"/>
+                        <br/><br/>
+
+                        <h:outputLabel class="heading" value="ZipCode: #{farmController.selected.zip}"/>
+                        <br/><br/>
                         <h:outputText value="#{farmController.selected.city}" styleClass="scrollableOutputText" />
                         <br/>
                     </div>
 
+                    
+                    <p:graphicImage id="keimg" name="images/galleriaPhotos/photo1.jpg" alt="Image Description" 
+                                    title="Delicious PizzaHut Pizzas!"/>
+
+                    <br/>
+                    <br/>
                     <h:link outcome="FarmersMarkets"><i class="fa fa-arrow-left"></i>&nbsp;Go Back&nbsp;&nbsp;</h:link>
                     <h:commandLink action="ShowOnMap.xhtml?faces-redirect=true" disabled="#{empty farmController.selected}">
                         <i class="fa fa-map"></i>&nbsp;Show on Map
@@ -59,16 +70,23 @@ Copyright © 2016 Zhen Guo. All rights reserved.
                 <p:inputText id="keyword" value="#{goodslistController.setSearchID(1002815)}" 
                              required="true" requiredMessage="Please enter a search ID!">
                 </p:inputText>
-                
-                
+
+
 
                 <p:commandButton id="viewButton"  icon="ui-icon-document" value="Buy" 
                                  styleClass="commandButton" 
                                  action ="GoodsList.xhtml?faces-redirect=true"
-                />
+                                 />
 
 
             </div>
+
+            <script  type="text/javascript">
+                function changepic() {
+                    var randomnumber = 2;//Math.floor(Math.random() * 10) +1;
+                    document.getElementById("keimg").name = "images/galleriaPhotos/photo" + randomnumber + ".jpg";
+                }
+            </script>
 
         </ui:define>
 
