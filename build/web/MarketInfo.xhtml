@@ -34,8 +34,20 @@ Copyright © 2016 Zhen Guo. All rights reserved.
                         <h:outputLabel class="heading" value="Market Name: #{farmController.selected.marketName}"/>
                         <br/><br/> 
 
+                        <img id="keimg" src="resources/images/galleriaPhotos/photo1.jpg" width="500px" height="313px" alt="Image Descr"/>
+                        <br/><br/> 
+
                         <h:outputLabel class="heading" value="WebSite: #{farmController.selected.website}"/>
                         <br/><br/>   
+                        
+                         <h:panelGrid columns="2">
+                            <h:outputLabel class="heading" value="Go to Homepage:&nbsp;"/>
+                            <a href="#{farmController.selected.website}">
+                                <img border="0" alt="W3Schools" src="resources/images/home.png" width="30px" height="30px"/>
+                            </a>
+                        </h:panelGrid>
+                        <br/>
+                        
                         <h:outputLabel class="heading" value="#{farmController.selected.fmid} FMID"/>
                         <br/><br/>
 
@@ -44,19 +56,25 @@ Copyright © 2016 Zhen Guo. All rights reserved.
 
                         <h:outputLabel class="heading" value="#{farmController.selected.y} Y-axis"/>
                         <br/><br/>
-
                         <h:outputLabel class="heading" value="Facebook: #{farmController.selected.facebook}"/>
                         <br/><br/>
+                        <h:panelGrid columns="2">
+                            <h:outputLabel class="heading" value="Go to Facebook:&nbsp;"/>
+                            <a href="#{farmController.selected.facebook}">
+                                <img border="0" alt="W3Schools" src="resources/images/fb.png" width="30px" height="30px"/>
+                            </a>
+                        </h:panelGrid>
+                        <br/>
 
                         <h:outputLabel class="heading" value="ZipCode: #{farmController.selected.zip}"/>
                         <br/><br/>
-                        <h:outputText value="#{farmController.selected.city}" styleClass="scrollableOutputText" />
-                        <br/>
+                        <h:outputText class="heading" value="City: #{farmController.selected.city}"/>
+                        <br/><br/>
+                        <h:panelGrid columns="2">
+                            <h:outputLabel class="heading" value="Rating:&nbsp;&nbsp;"/>
+                            <p:rating id="kerating" value="0" />        
+                        </h:panelGrid>
                     </div>
-
-
-                    <img id="keimg" src="resources/images/galleriaPhotos/photo1.jpg" width="500px" height="313px" alt="Image Descr"/>
-
                     <br/>
                     <br/>
                     <h:link outcome="FarmersMarkets"><i class="fa fa-arrow-left"></i>&nbsp;Go Back&nbsp;&nbsp;</h:link>
@@ -65,8 +83,10 @@ Copyright © 2016 Zhen Guo. All rights reserved.
                     </h:commandLink>
 
                     <script type="text/javascript">
-                        var randomnumber = Math.floor(Math.random() * 12) +1;
-                        document.getElementById("keimg").src = "resources/images/galleriaPhotos/photo"+randomnumber.toString()+".jpg";// + randomnumber + ".jpg";
+                        var randomnumber = Math.floor(Math.random() * 12) + 1;
+                        document.getElementById("keimg").src = "resources/images/galleriaPhotos/photo" + randomnumber.toString() + ".jpg";// + randomnumber + ".jpg";
+                        var ran2 = Math.floor(Math.random() * 4) + 1;
+                        document.getElementById("kerating").value = ran2.toString();
                     </script>
                 </h:form>
 
