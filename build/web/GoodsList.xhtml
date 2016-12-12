@@ -42,11 +42,16 @@ Copyright © 2016 Zhen Guo. All rights reserved.
                         <p:panel header="Item: #{item.gid}" style="text-align:center">
 
                             <h:panelGrid style="width:100%;margin-left: 20px">
-                                
+
                                 <h:panelGrid columns="2" style="float:left">
-                                    <h:graphicImage name="/images/farmgoods/goods#{item.gid}.jpg" height="100px" style="float:left"/>
-                                    <h:outputText value="Price/item: #{item.price}" />
-                                    
+                                    <h:graphicImage name="/images/farmgoods/goods#{item.gid}.jpg" height="120px" style="float:left"/>
+
+                                    <h:panelGrid columns="1" style="float:left">
+                                        <h:outputText value="Name: #{item.GName}" />
+                                        <h:outputText value="Price: $#{item.price}"/>
+                                        <h:outputText value="Category: #{item.category}"/>
+                                        <h:outputText value="Unit: #{item.unit}"/>
+                                    </h:panelGrid>
 
                                 </h:panelGrid>
                                 <h:outputText value="#{item.marketName}" />
