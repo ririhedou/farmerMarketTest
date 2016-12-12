@@ -28,38 +28,54 @@ Map to locate the farmer.
             The map is styled under class 'map' in siteStyles.css
             -->
             <div align="center" style="width:97%">
-               
-                    <h:outputLabel class="heading" value="Farmer Market: #{farmController.selected.marketName}"/>
-                    <br/><br/> 
 
-                    <h:outputLabel class="heading" value="Location:"/>
-                    <br/><br/>
+                <h:outputLabel class="heading" value="Farmer Market: #{farmController.selected.marketName}"/>
+                <br/><br/> 
 
-                    <h:outputLabel styleClass="scrollableOutputText" value="X-axis: #{farmController.selected.x}"/>
-                    <br/><br/>
+                <h:outputLabel class="heading" value="From Virgina Tech to the Farmer market:"/>
+                <br/><br/>
+                
+                <h:outputLabel class="heading" value="Location:"/>
+                <br/><br/>
 
-                    <h:outputLabel styleClass="scrollableOutputText"  value="Y-axis: #{farmController.selected.y}"/>
-                    <br/><br/>
-                    <!--p:growl id="growl" showDetail="true" autoUpdate="true" life="4000"/-->
-                    <div id="map" class="map"></div>
+                <h:outputLabel styleClass="scrollableOutputText" value="X-axis: #{farmController.selected.x}"/>
+                <br/><br/>
 
-                    <!-- Name, Latitude, and Longitude of the selected VT building are accessed in map.js -->
-                    <h:inputHidden id="buildingName" value="#{farmController.selected.marketName}" />
-                    <h:inputHidden id="Lat" value="#{farmController.selected.y}" />
-                    <h:inputHidden id="Long" value="#{farmController.selected.x}" />
+                <h:outputLabel styleClass="scrollableOutputText"  value="Y-axis: #{farmController.selected.y}"/>
+                <br/><br/>
+                <!--p:growl id="growl" showDetail="true" autoUpdate="true" life="4000"/-->
+                <div id="floating-panel">
+                        <b>Mode of Travel: </b>
+                        <select id="mode">
+                            <option value="DRIVING">Driving</option>
+                            <option value="WALKING">Walking</option>
+                            <option value="BICYCLING">Bicycling</option>
+                            <option value="TRANSIT">Transit</option>
+                        </select>
+                </div>
+                
+                <br/><br/>
+                
+                <div id="map" class="map">
+                </div>
+
+                <!-- Name, Latitude, and Longitude of the selected VT building are accessed in map.js -->
+                <h:inputHidden id="buildingName" value="#{farmController.selected.marketName}" />
+                <h:inputHidden id="Lat" value="#{farmController.selected.y}" />
+                <h:inputHidden id="Long" value="#{farmController.selected.x}" />
 
                     <!--p:gmap center="#{farmController.selected.y}, #{farmController.selected.x}" zoom="12" type="ROADMAP" style="width:800px;height:400px" model="#{markersView.advancedModel}">
                     </p:gmap-->
-                    <script type="text/javascript">
-                        initializeMap();
-                    </script>
-                    <!-->
-                    <script type="text/javascript">
-                        initializeMap();  // Initialize and display a Google Map of VT campus
-                    </script>
-                    <-->
-                    <h:link outcome="MarketInfo"><i class="fa fa-arrow-left"></i>&nbsp;Go Back&nbsp;&nbsp;</h:link>
-                
+                <script type="text/javascript">
+                    initializeMap();
+                </script>
+                <!-->
+                <script type="text/javascript">
+                    initializeMap();  // Initialize and display a Google Map of VT campus
+                </script>
+                <-->
+                <h:link outcome="MarketInfo"><i class="fa fa-arrow-left"></i>&nbsp;Go Back&nbsp;&nbsp;</h:link>
+
             </div>
         </ui:define>
 

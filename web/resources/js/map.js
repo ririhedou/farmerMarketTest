@@ -43,7 +43,7 @@ function initializeMap() {
      from the div element with id="map" in ShowOnMap.xhtml 
      */
     map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 5,
+        zoom: 10,
         center: {lat: 37.227264, lng: -80.420745},
         mapTypeControl: true,
         mapTypeControlOptions: {
@@ -67,29 +67,61 @@ function initializeMap() {
 
     //var buildingName = "FarmerMarket";
     //var buildingLatLong = new google.maps.LatLng(37, -80);
-
-    currentMarker = new google.maps.Marker({
-        title: buildingName,
-        position: buildingLatLong,
-        map: map
-    });
-
+    /*
+     currentMarker = new google.maps.Marker({
+     title: buildingName,
+     position: buildingLatLong,
+     map: map
+     });
+     */
     // Place the newly created pin marker on the VT campus map
-    currentMarker.setMap(map);
-    var infoWindow = new google.maps.InfoWindow();
+    //currentMarker.setMap(map);
+    /*var infoWindow = new google.maps.InfoWindow();
+     
+     // Attach an event handler to currentMarker to display the VT building's name when the pin marker is clicked
+     google.maps.event.addListener(currentMarker, "click", function () {
+     
+     infoWindow.setContent(this.get('title'));  // Show the VT building's name
+     
+     infoWindow.open(map, this);   // Use the map created here (map is a global variable)
+     });*/
 
-    // Attach an event handler to currentMarker to display the VT building's name when the pin marker is clicked
-    google.maps.event.addListener(currentMarker, "click", function () {
+    directionsDisplay.setMap(map);
 
-        infoWindow.setContent(this.get('title'));  // Show the VT building's name
-
-        infoWindow.open(map, this);   // Use the map created here (map is a global variable)
+    calculateAndDisplayRoute(directionsService, directionsDisplay);
+    document.getElementById('mode').addEventListener('change', function () {
+        calculateAndDisplayRoute(directionsService, directionsDisplay);
     });
-
 //displaySingleBuilding();
 }
 
+function calculateAndDisplayRoute(directionsService, directionsDisplay) {
+    var selectedMode = document.getElementById('mode').value;
 
+    //document.getElementById("Lat").value document.getElementById("Long").value
+    var buildingLatitude = document.getElementById("Lat").value;
+
+    // Obtain the selected VT building's Longitude value from the hidden input element with id="buildingLong" in ShowOnMap.xhtml
+    var buildingLongitude = document.getElementById("Long").value;
+    // Instantiate a new pin marker and dress it up with the selected VT building's properties
+
+    var endDes = new google.maps.LatLng(buildingLatitude, buildingLongitude);
+
+    directionsService.route({
+        origin: {lat: 37.22751, lng: -80.42189}, // Haight.
+        destination: endDes, // Ocean Beach.
+        // Note that Javascript allows us to access the constant
+        // using square brackets and a string value as its
+        // "property."
+        travelMode: google.maps.TravelMode[selectedMode]
+    }, function (response, status) {
+        if (status == 'OK') {
+            directionsDisplay.setDirections(response);
+        } else {
+            window.alert('Directions request failed due to ' + status);
+        }
+    });
+}
 // Displays the geolocation of the selected VT building on the VT campus map created in the initializeMap() function.
 function displaySingleBuilding() {
 

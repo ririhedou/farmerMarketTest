@@ -32,11 +32,14 @@ Copyright © 2016 Zhen Guo. All rights reserved.
                 -->
                 <h:outputText value="#{item.marketName}" />
                 <h:form id="form">
+                    <h:outputLabel class="heading" value="Farmer FMID: #{goodslistController.searchID}"/>
+                    <br/><br/>
+                    
                     <p:dataGrid var="item" value="#{goodslistController.searchItems}" columns="3" layout="grid"
                                 rows="10" paginator="true" id="products"  rowsPerPageTemplate="20,30,40,50" >
 
                         <f:facet name="header">
-                            Products Available in the farm 
+                            Products Available in the Farm 
                         </f:facet>
 
                         <p:panel header="Item: #{item.gid}" style="text-align:center">
