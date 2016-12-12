@@ -73,7 +73,7 @@ Copyright © 2016 Zhen Guo. All rights reserved.
                             <p:menuitem value="Create an Account" outcome="CreateAccount" icon="ui-icon-plus" ajax="false" />
                         </c:if>
 
-
+                        <!-->  
                         <p:submenu label="Pizza Hut" icon="ui-icon-heart">
 
                             <c:if test="#{accountManager.isLoggedIn() == true}">
@@ -99,14 +99,14 @@ Copyright © 2016 Zhen Guo. All rights reserved.
                                 <p:menuitem value="Tracking Tags" url="https://order.pizzahut.com/tracking-tags" />
                             </p:submenu>
                         </p:submenu>
-
+                        <-->
                         <p:submenu label="Market" icon="ui-icon-folder-open">
-                            <p:menuitem value="Test" outcome="index_old" icon="ui-icon-person" ajax="false" />
+                            <!--p:menuitem value="Test" outcome="index_old" icon="ui-icon-person" ajax="false" /-->
                             <p:menuitem value="Farmer's Market" outcome="FarmersMarkets" icon="ui-icon-person" ajax="false" />
-                            <p:menuitem value="xx" url="https://jobs.pizzahut.com/" />
-                            <p:menuitem value="xx" url="https://order.pizzahut.com/site/menu/deals" />
-                            <p:menuitem value="xx" url="https://order.pizzahut.com/international" />
-                            <p:menuitem value="xx" url="http://www.pizzahutfranchise.com/" />
+                            <p:menuitem value="ShowOnMap" outcome="ShowOnMap" icon="ui-icon-person" ajax="false" />
+                            <p:menuitem value="MarketInfo" outcome="MarketInfo" icon="ui-icon-person" ajax="false" />
+                            <p:menuitem value="CheckOut" outcome="CheckOut" icon="ui-icon-person" ajax="false" />
+                            <p:menuitem value="AuthorsInfo" outcome="index" icon="ui-icon-person" ajax="false"/>
                         </p:submenu>
 
                     </p:menubar>

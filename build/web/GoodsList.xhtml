@@ -35,11 +35,11 @@ ke added thr js function
                 <!--h:form id="form"-->
                     <h:outputLabel class="heading" value="Farmer FMID: #{goodslistController.searchID}&nbsp;&nbsp;&nbsp;&nbsp;"/>
                     <br/>
-                    <p:button  onclick="showSummary()" value="Cart Summary &nbsp;&nbsp;" icon="ui-icon-star"></p:button>
+                    <p:button  onclick="showSummary()" value="Cart Summary &nbsp;" icon="ui-icon-star"></p:button>
                     
-                    <p:button  onclick="deleteCart()" value="Delete Cart &nbsp;&nbsp;" icon="ui-icon-star"></p:button>
+                    <p:button  onclick="deleteCart()" value="Delete Cart &nbsp;" icon="ui-icon-star"></p:button>
                     
-                     <h:link outcome="index"><i class="fa fa-arrow-right"></i>&nbsp;CheckOut&nbsp;&nbsp;</h:link>
+                    <h:link outcome="CheckOut"><i class="fa fa-arrow-right"></i>&nbsp;CheckOut&nbsp;&nbsp;</h:link>
                     <br/>
                     <br/>
 
@@ -97,6 +97,7 @@ ke added thr js function
                     function deleteCart()
                     {
                         localStorage.removeItem('cart');
+                        alert("you delete the cart items, please continue shopping~");
                     }
                     function showSummary()
                     {
