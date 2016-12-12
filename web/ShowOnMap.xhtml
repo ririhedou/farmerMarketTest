@@ -32,19 +32,33 @@ Map to locate the farmer.
                     <h:outputLabel class="heading" value="Farmer Market: #{farmController.selected.marketName}"/>
                     <br/><br/> 
 
-                     <h:outputLabel class="heading" value="Location:"/>
+                    <h:outputLabel class="heading" value="Location:"/>
                     <br/><br/>
-                    
+
                     <h:outputLabel styleClass="scrollableOutputText" value="X-axis: #{farmController.selected.x}"/>
                     <br/><br/>
 
                     <h:outputLabel styleClass="scrollableOutputText"  value="Y-axis: #{farmController.selected.y}"/>
                     <br/><br/>
                     <!--p:growl id="growl" showDetail="true" autoUpdate="true" life="4000"/-->
-                    <p:gmap center="#{farmController.selected.y}, #{farmController.selected.x}" zoom="12" type="ROADMAP" style="width:800px;height:400px" model="#{markersView.advancedModel}">
-                    </p:gmap>
-                    
-                     <h:link outcome="MarketInfo"><i class="fa fa-arrow-left"></i>&nbsp;Go Back&nbsp;&nbsp;</h:link>
+                    <div id="map" class="map"></div>
+
+                    <!-- Name, Latitude, and Longitude of the selected VT building are accessed in map.js -->
+                    <h:inputHidden id="buildingName" value="FarmerMarket" />
+                    <h:inputHidden id="Lat" value="#{farmController.selected.y}" />
+                    <h:inputHidden id="Long" value="#{farmController.selected.x}" />
+
+                    <!--p:gmap center="#{farmController.selected.y}, #{farmController.selected.x}" zoom="12" type="ROADMAP" style="width:800px;height:400px" model="#{markersView.advancedModel}">
+                    </p:gmap-->
+                    <script type="text/javascript">
+                        initializeMap();
+                    </script>
+                    <!-->
+                    <script type="text/javascript">
+                        initializeMap();  // Initialize and display a Google Map of VT campus
+                    </script>
+                    <-->
+                    <h:link outcome="MarketInfo"><i class="fa fa-arrow-left"></i>&nbsp;Go Back&nbsp;&nbsp;</h:link>
                 </h:form>
             </div>
         </ui:define>

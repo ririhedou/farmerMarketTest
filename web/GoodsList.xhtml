@@ -30,7 +30,7 @@ Copyright © 2016 Zhen Guo. All rights reserved.
                 The location of growl in a JSF page does not matter since the messages are displayed
                 as an overlay. The following will display the messages for 5 seconds and then fade away.
                 -->
-
+                <h:outputText value="#{item.marketName}" />
                 <h:form id="form">
                     <p:dataGrid var="item" value="#{goodslistController.searchItems}" columns="3" layout="grid"
                                 rows="10" paginator="true" id="products"  rowsPerPageTemplate="20,30,40,50" >
@@ -52,9 +52,14 @@ Copyright © 2016 Zhen Guo. All rights reserved.
                                         <h:outputText value="Category: #{item.category}"/>
                                         <h:outputText value="Unit: #{item.unit}"/>
                                     </h:panelGrid>
-
+                                    <!--p:selectBooleanCheckbox value="#{selectBooleanView.value1}" /-->
                                 </h:panelGrid>
-                                <h:outputText value="#{item.marketName}" />
+                                
+                                <h:panelGrid columns="2" style="float:center">
+                                <h:outputText value="Add to cart: " />
+                                <p:selectBooleanCheckbox value="" />    
+                                </h:panelGrid>
+                               
                             </h:panelGrid>
                         </p:panel>
 

@@ -43,7 +43,7 @@ function initializeMap() {
      from the div element with id="map" in ShowOnMap.xhtml 
      */
     map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 15,
+        zoom: 5,
         center: {lat: 37.227264, lng: -80.420745},
         mapTypeControl: true,
         mapTypeControlOptions: {
@@ -53,50 +53,32 @@ function initializeMap() {
         mapTypeId: google.maps.MapTypeId.HYBRID
     });
     
-    // Show the desired map using the map created above by calling the display() function.
-    display();
+    var buildingName = document.getElementById("buildingName").value;
     
-}
-
-/*
- The Virginia Tech campus map created in the initializeMap() function above is used to show:
-     (1) directions from one building to another on campus,
-     (2) the location of a single VT building, or
-     (3) locations of VT buildings in a given building category.
- */
-function display() {
-    /*
-     document.getElementById("destinationName").value --> Obtains the name of the destination 
-     VT building from the hidden input element with id="destinationName" in ShowOnMap.xhtml 
-     */
-    if (document.getElementById("destinationName").value !== '') {
-        /*
-         If destinationName has a value, the user asked for directions.
-         Show directions on the VT campus map created in the initializeMap() function.
-         */
-        drawRoute();
-    }
-    /*
-     document.getElementById("buildingName").value --> Obtains the name of the selected 
-     VT building from the hidden input element with id="buildingName" in ShowOnMap.xhtml 
-     */
-    else if (document.getElementById("buildingName").value !== '') {
-        /*
-         If buildingName has a value, the user asked for the location of a single VT building.
-         Show the location of the VT building on the VT campus map created in the initializeMap() function.
-         */
-        displaySingleBuilding();
-    }
-    else {
-        /*
-         Show the locations of VT buildings in a given building category on
-         the VT campus map created in the initializeMap() function.
-         */
-        displayBuildingsByCategory();
-    }
+    // Obtain the selected VT building's Latitude value from the hidden input element with id="buildingLat" in ShowOnMap.xhtml 
+    var buildingLatitude = document.getElementById("Lat").value;
     
-}
+    // Obtain the selected VT building's Longitude value from the hidden input element with id="buildingLong" in ShowOnMap.xhtml
+    var buildingLongitude = document.getElementById("Long").value;
+    // Instantiate a new pin marker and dress it up with the selected VT building's properties
+    
+    var buildingLatLong = new google.maps.LatLng(buildingLatitude, buildingLongitude);
+    
+    //var buildingName = "FarmerMarket";
+    //var buildingLatLong = new google.maps.LatLng(37, -80);
+    
+    currentMarker = new google.maps.Marker({
+        title: buildingName,
+        position: buildingLatLong,
+        map: map
+    });
 
+    // Place the newly created pin marker on the VT campus map
+    currentMarker.setMap(map);
+
+//displaySingleBuilding();
+  }
+    
 
 // Displays the geolocation of the selected VT building on the VT campus map created in the initializeMap() function.
 function displaySingleBuilding() {
@@ -111,7 +93,9 @@ function displaySingleBuilding() {
     var buildingLongitude = document.getElementById("buildingLong").value;
     
     // Determine the geolocation of the selected VT building
-    var buildingLatLong = new google.maps.LatLng(buildingLatitude, buildingLongitude);
+   // var buildingLatLong = new google.maps.LatLng(buildingLatitude, buildingLongitude);
+    var buildingName = "hello";
+    var buildingLatLong = new google.maps.LatLng(37, -80);
 
     // Set the center of the map to the geolocation coordinates of the selected VT building
     map.setCenter(buildingLatLong);
