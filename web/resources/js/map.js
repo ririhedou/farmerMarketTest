@@ -53,19 +53,19 @@ function initializeMap() {
         mapTypeId: google.maps.MapTypeId.HYBRID
     });
 
-    //var buildingName = document.getElementById("buildingName").value;
+    var buildingName = document.getElementById("buildingName").value;
 
     // Obtain the selected VT building's Latitude value from the hidden input element with id="buildingLat" in ShowOnMap.xhtml 
     //document.getElementById("Lat").value document.getElementById("Long").value
-    var buildingLatitude = "37.2803308";//document.getElementById("Lat").value;
+    var buildingLatitude = document.getElementById("Lat").value;
 
     // Obtain the selected VT building's Longitude value from the hidden input element with id="buildingLong" in ShowOnMap.xhtml
-    var buildingLongitude = "-79.8988910";// document.getElementById("Long").value;
+    var buildingLongitude = document.getElementById("Long").value;
     // Instantiate a new pin marker and dress it up with the selected VT building's properties
 
     var buildingLatLong = new google.maps.LatLng(buildingLatitude, buildingLongitude);
 
-    var buildingName = "FarmerMarket";
+    //var buildingName = "FarmerMarket";
     //var buildingLatLong = new google.maps.LatLng(37, -80);
 
     currentMarker = new google.maps.Marker({

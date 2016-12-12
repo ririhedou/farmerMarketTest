@@ -41,7 +41,7 @@ Copyright © 2016 Zhen Guo. All rights reserved.
                         <br/><br/>   
                         
                          <h:panelGrid columns="2">
-                            <h:outputLabel class="heading" value="Go to Homepage:&nbsp;"/>
+                            <h:outputLabel class="heading" value="Go to FarmerMarket Homepage:&nbsp;"/>
                             <a href="#{farmController.selected.website}">
                                 <img border="0" alt="W3Schools" src="resources/images/home.png" width="30px" height="30px"/>
                             </a>
@@ -72,7 +72,7 @@ Copyright © 2016 Zhen Guo. All rights reserved.
                         <br/><br/>
                         <h:panelGrid columns="2">
                             <h:outputLabel class="heading" value="Rating:&nbsp;&nbsp;"/>
-                            <p:rating id="kerating" value="0" />        
+                            <p:rating id="kerating" value="3" />        
                         </h:panelGrid>
                     </div>
                     <br/>
@@ -86,7 +86,7 @@ Copyright © 2016 Zhen Guo. All rights reserved.
                         var randomnumber = Math.floor(Math.random() * 12) + 1;
                         document.getElementById("keimg").src = "resources/images/galleriaPhotos/photo" + randomnumber.toString() + ".jpg";// + randomnumber + ".jpg";
                         var ran2 = Math.floor(Math.random() * 4) + 1;
-                        document.getElementById("kerating").value = ran2.toString();
+                        document.getElementById("kerating").value = 4;
                     </script>
                 </h:form>
 
@@ -94,14 +94,10 @@ Copyright © 2016 Zhen Guo. All rights reserved.
                              required="true" requiredMessage="Please enter a search ID!">
                 </p:inputText>
 
-
-
                 <p:commandButton id="viewButton"  icon="ui-icon-document" value="Buy" 
                                  styleClass="commandButton" 
                                  action ="GoodsList.xhtml?faces-redirect=true"
                                  />
-
-
             </div>
 
 
