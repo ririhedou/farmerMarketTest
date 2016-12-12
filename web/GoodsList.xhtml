@@ -15,16 +15,51 @@ Copyright © 2016 Zhen Guo. All rights reserved.
     <!-- Do not enter tags before the composition line since they are ignored by JSF -->
 
     <!-- This page is constructed based on the siteTemplate -->
+    <ui:composition template="template/siteTemplate.xhtml">
 
+        <ui:define name="title">
+            <!-- Set the page title -->
+            <h:outputText value="Search Results"></h:outputText>
+        </ui:define>
 
-    <h:outputLabel class="heading" value="#{goodslistController.searchID} X-axis"/>
-    <br/><br/>
+        <ui:define name="editableContent">
 
-    <p:dataTable var="item" value="#{goodslistController.searchItems}">
-        <p:column headerText="Id">
-            <h:outputText value="#{item.price}" />
-        </p:column>
-    </p:dataTable>   
+            <div align="center" style="width:97%">
+                <!--
+                PrimeFaces Growl displays messages in an overlay. Place p:growl anywhere on your JSF page. 
+                The location of growl in a JSF page does not matter since the messages are displayed
+                as an overlay. The following will display the messages for 5 seconds and then fade away.
+                -->
+
+                <h:form id="form">
+                    <p:dataGrid var="item" value="#{goodslistController.searchItems}" columns="3" layout="grid"
+                                rows="10" paginator="true" id="products"  rowsPerPageTemplate="20,30,40,50" >
+
+                        <f:facet name="header">
+                            Products Available in the farm 
+                        </f:facet>
+
+                        <p:panel header="Item: #{item.gid}" style="text-align:center">
+
+                            <h:panelGrid style="width:100%;margin-left: 20px">
+                                
+                                <h:panelGrid columns="2" style="float:left">
+                                    <h:graphicImage name="/images/farmgoods/goods#{item.gid}.jpg" height="100px" style="float:left"/>
+                                    <h:outputText value="Price/item: #{item.price}" />
+                                    
+
+                                </h:panelGrid>
+                                <h:outputText value="#{item.marketName}" />
+                            </h:panelGrid>
+                        </p:panel>
+
+                    </p:dataGrid>     
+                </h:form>
+
+            </div>
+        </ui:define>              
+    </ui:composition>
+
 
 
 
