@@ -14,7 +14,7 @@ DROP TABLE IF EXISTS Customer;
 https://www.ams.usda.gov/local-food-directories/farmersmarkets
 */
 CREATE TABLE Farm(
-  FMID        INT UNSIGNED  NOT NULL PRIMARY KEY, 
+  FMID        VARCHAR(8)  NOT NULL PRIMARY KEY, 
   MarketName  VARCHAR(64) NOT NULL,
   Website     VARCHAR(64),
   Facebook    VARCHAR(128),
@@ -74,10 +74,9 @@ INSERT INTO Farm(FMID,MarketName,Website,Facebook,street,city,State,zip,Season1D
 /*Category table is the relation between farmer's market and goods categories */
 CREATE TABLE Category(
    CID      INT UNSIGNED  NOT NULL PRIMARY KEY AUTO_INCREMENT,
-   FMID     INT UNSIGNED  NOT NULL,
+   FMID     VARCHAR(8)  NOT NULL,
    CName    VARCHAR(16) NOT NULL,
-   Icon     VARCHAR(32),
-   FOREIGN KEY (FMID) REFERENCES Farm(FMID) ON DELETE CASCADE
+   Icon     VARCHAR(32)
 );
 INSERT INTO Category(FMID,Cname,Icon) VALUES 
 (1000254,'Bakedgoods',NULL),(1000254,'Eggs',NULL),(1000254,'Vegetables',NULL),(1000254,'Honey',NULL),(1000254,'Jams',NULL),
@@ -164,7 +163,7 @@ INSERT INTO Goods(GName,Image,Price,Unit,Category) VALUES
 /*GoodsList Table join Farm, Category and Goods Table and lists information for a product*/
 CREATE TABLE GoodsList( 
     GLID        INT UNSIGNED  NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    FMID        INT UNSIGNED NOT NULL,
+    FMID        VARCHAR(8) NOT NULL,
     MarketName  VARCHAR(64) NOT NULL,
     Website     VARCHAR(64),
     Category    VARCHAR(16) NOT NULL,
@@ -172,9 +171,7 @@ CREATE TABLE GoodsList(
     GName       VARCHAR(32) NOT NULL, 
     Image       VARCHAR(8)  NOT NULL,
     Price       NUMERIC(5,2) NOT NULL,
-    Unit        VARCHAR(16) NOT NULL,
-    FOREIGN KEY (FMID) REFERENCES Farm(FMID) ON DELETE CASCADE,
-    FOREIGN KEY (GID) REFERENCES Goods(GID) ON DELETE CASCADE
+    Unit        VARCHAR(16) NOT NULL
 );
 INSERT INTO GoodsList(FMID, MarketName, Website, Category, GID, GName, Image, Price, Unit)
 SELECT Farm.FMID, MarketName, Website, Category.CName, GID, GName,Image, Price, Unit  
@@ -191,8 +188,7 @@ CREATE TABLE Cart(
    Price    NUMERIC(5,2)  NOT NULL,
    Unit     VARCHAR(16) NOT NULL,
    Category VARCHAR(16) NOT NULL,
-   Quantity INT NOT NULL,
-   FOREIGN KEY (GLID) REFERENCES GoodsList(GLID) ON DELETE CASCADE
+   Quantity INT NOT NULL
 );
 
 /* The Customer table contains attributes of interest of a customer. */

@@ -1,3 +1,7 @@
+/*
+ * Created by Zhen Guo on 2016.12.10  * 
+ * Copyright © 2016 Zhen Guo. All rights reserved. * 
+ */
 package market.mymarket.jsfclasses.util;
 
 import java.util.List;

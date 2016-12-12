@@ -1,47 +1,43 @@
 /*
- * Created by Ke Tian on 2016.12.11  * 
- * Copyright © 2016 Ke Tian. All rights reserved. * 
+ * Created by Zhen Guo on 2016.12.11  * 
+ * Copyright © 2016 Zhen Guo. All rights reserved. * 
  */
 package market.mymarket.entityclasses;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.util.Collection;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author ketian
+ * @author ZG
  */
 @Entity
 @Table(name = "goodslist")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Goodslist.findAll", query = "SELECT g FROM Goodslist g"),
-    @NamedQuery(name = "Goodslist.findByGlid", query = "SELECT g FROM Goodslist g WHERE g.glid = :glid"),
-    @NamedQuery(name = "Goodslist.findByMarketName", query = "SELECT g FROM Goodslist g WHERE g.marketName = :marketName"),
-    @NamedQuery(name = "Goodslist.findByWebsite", query = "SELECT g FROM Goodslist g WHERE g.website = :website"),
-    @NamedQuery(name = "Goodslist.findByCategory", query = "SELECT g FROM Goodslist g WHERE g.category = :category"),
-    @NamedQuery(name = "Goodslist.findByGName", query = "SELECT g FROM Goodslist g WHERE g.gName = :gName"),
-    @NamedQuery(name = "Goodslist.findByImage", query = "SELECT g FROM Goodslist g WHERE g.image = :image"),
-    @NamedQuery(name = "Goodslist.findByPrice", query = "SELECT g FROM Goodslist g WHERE g.price = :price"),
-    @NamedQuery(name = "Goodslist.findByUnit", query = "SELECT g FROM Goodslist g WHERE g.unit = :unit")})
+    @NamedQuery(name = "Goodslist.findAll", query = "SELECT g FROM Goodslist g")
+    , @NamedQuery(name = "Goodslist.findByGlid", query = "SELECT g FROM Goodslist g WHERE g.glid = :glid")
+    , @NamedQuery(name = "Goodslist.findByFmid", query = "SELECT g FROM Goodslist g WHERE g.fmid = :fmid")
+    , @NamedQuery(name = "Goodslist.findByMarketName", query = "SELECT g FROM Goodslist g WHERE g.marketName = :marketName")
+    , @NamedQuery(name = "Goodslist.findByWebsite", query = "SELECT g FROM Goodslist g WHERE g.website = :website")
+    , @NamedQuery(name = "Goodslist.findByCategory", query = "SELECT g FROM Goodslist g WHERE g.category = :category")
+    , @NamedQuery(name = "Goodslist.findByGid", query = "SELECT g FROM Goodslist g WHERE g.gid = :gid")
+    , @NamedQuery(name = "Goodslist.findByGName", query = "SELECT g FROM Goodslist g WHERE g.gName = :gName")
+    , @NamedQuery(name = "Goodslist.findByImage", query = "SELECT g FROM Goodslist g WHERE g.image = :image")
+    , @NamedQuery(name = "Goodslist.findByPrice", query = "SELECT g FROM Goodslist g WHERE g.price = :price")
+    , @NamedQuery(name = "Goodslist.findByUnit", query = "SELECT g FROM Goodslist g WHERE g.unit = :unit")})
 public class Goodslist implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -50,6 +46,11 @@ public class Goodslist implements Serializable {
     @Basic(optional = false)
     @Column(name = "GLID")
     private Integer glid;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 8)
+    @Column(name = "FMID")
+    private String fmid;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 64)
@@ -63,6 +64,10 @@ public class Goodslist implements Serializable {
     @Size(min = 1, max = 16)
     @Column(name = "Category")
     private String category;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "GID")
+    private int gid;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 32)
@@ -83,14 +88,6 @@ public class Goodslist implements Serializable {
     @Size(min = 1, max = 16)
     @Column(name = "Unit")
     private String unit;
-    @JoinColumn(name = "FMID", referencedColumnName = "FMID")
-    @ManyToOne(optional = false)
-    private Farm fmid;
-    @JoinColumn(name = "GID", referencedColumnName = "GID")
-    @ManyToOne(optional = false)
-    private Goods gid;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "glid")
-    private Collection<Cart> cartCollection;
 
     public Goodslist() {
     }
@@ -99,10 +96,12 @@ public class Goodslist implements Serializable {
         this.glid = glid;
     }
 
-    public Goodslist(Integer glid, String marketName, String category, String gName, String image, BigDecimal price, String unit) {
+    public Goodslist(Integer glid, String fmid, String marketName, String category, int gid, String gName, String image, BigDecimal price, String unit) {
         this.glid = glid;
+        this.fmid = fmid;
         this.marketName = marketName;
         this.category = category;
+        this.gid = gid;
         this.gName = gName;
         this.image = image;
         this.price = price;
@@ -115,6 +114,14 @@ public class Goodslist implements Serializable {
 
     public void setGlid(Integer glid) {
         this.glid = glid;
+    }
+
+    public String getFmid() {
+        return fmid;
+    }
+
+    public void setFmid(String fmid) {
+        this.fmid = fmid;
     }
 
     public String getMarketName() {
@@ -139,6 +146,14 @@ public class Goodslist implements Serializable {
 
     public void setCategory(String category) {
         this.category = category;
+    }
+
+    public int getGid() {
+        return gid;
+    }
+
+    public void setGid(int gid) {
+        this.gid = gid;
     }
 
     public String getGName() {
@@ -171,31 +186,6 @@ public class Goodslist implements Serializable {
 
     public void setUnit(String unit) {
         this.unit = unit;
-    }
-
-    public Farm getFmid() {
-        return fmid;
-    }
-
-    public void setFmid(Farm fmid) {
-        this.fmid = fmid;
-    }
-
-    public Goods getGid() {
-        return gid;
-    }
-
-    public void setGid(Goods gid) {
-        this.gid = gid;
-    }
-
-    @XmlTransient
-    public Collection<Cart> getCartCollection() {
-        return cartCollection;
-    }
-
-    public void setCartCollection(Collection<Cart> cartCollection) {
-        this.cartCollection = cartCollection;
     }
 
     @Override

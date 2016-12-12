@@ -1,6 +1,6 @@
 /*
- * Created by Ke Tian on 2016.12.11  * 
- * Copyright © 2016 Ke Tian. All rights reserved. * 
+ * Created by Zhen Guo on 2016.12.11  * 
+ * Copyright © 2016 Zhen Guo. All rights reserved. * 
  */
 package market.mymarket.entityclasses;
 
@@ -11,8 +11,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -22,16 +20,17 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author ketian
+ * @author ZG
  */
 @Entity
-@Table(name = "Category")
+@Table(name = "category")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Category.findAll", query = "SELECT c FROM Category c"),
-    @NamedQuery(name = "Category.findByCid", query = "SELECT c FROM Category c WHERE c.cid = :cid"),
-    @NamedQuery(name = "Category.findByCName", query = "SELECT c FROM Category c WHERE c.cName = :cName"),
-    @NamedQuery(name = "Category.findByIcon", query = "SELECT c FROM Category c WHERE c.icon = :icon")})
+    @NamedQuery(name = "Category.findAll", query = "SELECT c FROM Category c")
+    , @NamedQuery(name = "Category.findByCid", query = "SELECT c FROM Category c WHERE c.cid = :cid")
+    , @NamedQuery(name = "Category.findByFmid", query = "SELECT c FROM Category c WHERE c.fmid = :fmid")
+    , @NamedQuery(name = "Category.findByCName", query = "SELECT c FROM Category c WHERE c.cName = :cName")
+    , @NamedQuery(name = "Category.findByIcon", query = "SELECT c FROM Category c WHERE c.icon = :icon")})
 public class Category implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -42,15 +41,17 @@ public class Category implements Serializable {
     private Integer cid;
     @Basic(optional = false)
     @NotNull
+    @Size(min = 1, max = 8)
+    @Column(name = "FMID")
+    private String fmid;
+    @Basic(optional = false)
+    @NotNull
     @Size(min = 1, max = 16)
     @Column(name = "CName")
     private String cName;
     @Size(max = 32)
     @Column(name = "Icon")
     private String icon;
-    @JoinColumn(name = "FMID", referencedColumnName = "FMID")
-    @ManyToOne(optional = false)
-    private Farm fmid;
 
     public Category() {
     }
@@ -59,8 +60,9 @@ public class Category implements Serializable {
         this.cid = cid;
     }
 
-    public Category(Integer cid, String cName) {
+    public Category(Integer cid, String fmid, String cName) {
         this.cid = cid;
+        this.fmid = fmid;
         this.cName = cName;
     }
 
@@ -70,6 +72,14 @@ public class Category implements Serializable {
 
     public void setCid(Integer cid) {
         this.cid = cid;
+    }
+
+    public String getFmid() {
+        return fmid;
+    }
+
+    public void setFmid(String fmid) {
+        this.fmid = fmid;
     }
 
     public String getCName() {
@@ -86,14 +96,6 @@ public class Category implements Serializable {
 
     public void setIcon(String icon) {
         this.icon = icon;
-    }
-
-    public Farm getFmid() {
-        return fmid;
-    }
-
-    public void setFmid(Farm fmid) {
-        this.fmid = fmid;
     }
 
     @Override

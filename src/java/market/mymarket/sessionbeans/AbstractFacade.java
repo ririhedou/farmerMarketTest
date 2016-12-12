@@ -27,11 +27,11 @@ public abstract class AbstractFacade<T> {
 
     /* 
     ---------------------------------------------------------------------------------
-    This is the constructor method called by the subclass CustomerFacade.java class's
-    constructor method by passing the Customer.class as a parameter.
-    Customer.class returns an object reference to the Customer class, which is set
+    This is the constructor method called by the subclass GoodslistFacade.java class's
+    constructor method by passing the Goodslist.class as a parameter.
+    Goodslist.class returns an object reference to the Goodslist class, which is set
     as the value of the entityClass instance variable.
-    The class type T is set to the Customer entity class. So, T = Customer
+    The class type T is set to the Goodslist entity class. So, T = Goodslist
     ---------------------------------------------------------------------------------
      */
     public AbstractFacade(Class<T> entityClass) {
@@ -39,13 +39,13 @@ public abstract class AbstractFacade<T> {
     }
 
     /* 
-    This method is overridden in CustomerFacade.java, which is the
+    This method is overridden in GoodslistFacade.java, which is the
     concrete Facade subclass providing the actual implementation.
      */
     protected abstract EntityManager getEntityManager();
 
     /**
-     * Stores the newly CREATED Customer (entity) object into the database
+     * Stores the newly CREATED Goodslist (entity) object into the database
      *
      * @param entity contains object reference of the Customer
      */
@@ -54,18 +54,18 @@ public abstract class AbstractFacade<T> {
     }
 
     /**
-     * Stores the EDITED Customer (entity) object into the database
+     * Stores the EDITED Goodslist (entity) object into the database
      *
-     * @param entity contains object reference of the Customer
+     * @param entity contains object reference of the Goodslist
      */
     public void edit(T entity) {
         getEntityManager().merge(entity);
     }
 
     /**
-     * Deletes the given Customer (entity) object from the database
+     * Deletes the given Goodslist (entity) object from the database
      *
-     * @param entity contains object reference of the Customer
+     * @param entity contains object reference of the Goodslist
      */
     public void remove(T entity) {
         getEntityManager().remove(getEntityManager().merge(entity));
@@ -92,18 +92,18 @@ public abstract class AbstractFacade<T> {
 
     /*
     ---------------------------------------------------------------------------------
-    Finds and returns a list of customers within a certain id range.
+    Finds and returns a list of Goodslist within a certain id range.
     
-    Returns a List of Customer objects in a range from the database. The range is
+    Returns a List of Goodslist objects in a range from the database. The range is
     specified by the range parameter of type integer array. The 1st element of the
-    range array = index number of the first Customer object to retrieve. The 2nd
-    element of the range array = index number of the last Customer object to retrieve.
+    range array = index number of the first Goodslist object to retrieve. The 2nd
+    element of the range array = index number of the last Goodslist object to retrieve.
     ---------------------------------------------------------------------------------
      */
     
     /**
      * @param range The id range
-     * @return a list of customers within a certain id range
+     * @return a list of goodslist within a certain id range
      */
     public List<T> findRange(int[] range) {
         javax.persistence.criteria.CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
@@ -115,8 +115,8 @@ public abstract class AbstractFacade<T> {
     }
 
     /**
-     * Obtains and returns the total number of customers in the database
-     * @return the total number of customers
+     * Obtains and returns the total number of goodslist in the database
+     * @return the total number of goodslist
      */
     public int count() {
         javax.persistence.criteria.CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();

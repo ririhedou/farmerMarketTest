@@ -96,12 +96,11 @@ public class GoodslistFacade extends AbstractFacade<Goodslist> {
     /**
      * Searches Goodslist for rows where FMID equals to the searchID from FarmController.selected.fmid .
      *
-     * @param searchID contains the search string the user entered for searching company names
+     * @param searchID contains the search Integer for FMID
      * @return A list of Company object references as the search results
      */
-    public List<Goodslist> fmidQuery(Integer searchID) {
+    public List<Goodslist> fmidQuery(String searchID) {
         // Conduct the search in a case-insensitive manner and return the results in a list.
-        //return getEntityManager().createQuery("SELECT c FROM Goodslist c WHERE c.fmid = 1002815").getResultList();
         return getEntityManager().createQuery("SELECT c FROM Goodslist c WHERE c.fmid = :searchID").setParameter("searchID", searchID).getResultList();
     }
 }

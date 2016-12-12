@@ -1,6 +1,6 @@
 /*
- * Created by Ke Tian on 2016.12.11  * 
- * Copyright © 2016 Ke Tian. All rights reserved. * 
+ * Created by Zhen Guo on 2016.12.11  * 
+ * Copyright © 2016 Zhen Guo. All rights reserved. * 
  */
 package market.mymarket.entityclasses;
 
@@ -12,8 +12,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -23,20 +21,21 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author ketian
+ * @author ZG
  */
 @Entity
-@Table(name = "Cart")
+@Table(name = "cart")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Cart.findAll", query = "SELECT c FROM Cart c"),
-    @NamedQuery(name = "Cart.findByCartID", query = "SELECT c FROM Cart c WHERE c.cartID = :cartID"),
-    @NamedQuery(name = "Cart.findByGName", query = "SELECT c FROM Cart c WHERE c.gName = :gName"),
-    @NamedQuery(name = "Cart.findByImage", query = "SELECT c FROM Cart c WHERE c.image = :image"),
-    @NamedQuery(name = "Cart.findByPrice", query = "SELECT c FROM Cart c WHERE c.price = :price"),
-    @NamedQuery(name = "Cart.findByUnit", query = "SELECT c FROM Cart c WHERE c.unit = :unit"),
-    @NamedQuery(name = "Cart.findByCategory", query = "SELECT c FROM Cart c WHERE c.category = :category"),
-    @NamedQuery(name = "Cart.findByQuantity", query = "SELECT c FROM Cart c WHERE c.quantity = :quantity")})
+    @NamedQuery(name = "Cart.findAll", query = "SELECT c FROM Cart c")
+    , @NamedQuery(name = "Cart.findByCartID", query = "SELECT c FROM Cart c WHERE c.cartID = :cartID")
+    , @NamedQuery(name = "Cart.findByGlid", query = "SELECT c FROM Cart c WHERE c.glid = :glid")
+    , @NamedQuery(name = "Cart.findByGName", query = "SELECT c FROM Cart c WHERE c.gName = :gName")
+    , @NamedQuery(name = "Cart.findByImage", query = "SELECT c FROM Cart c WHERE c.image = :image")
+    , @NamedQuery(name = "Cart.findByPrice", query = "SELECT c FROM Cart c WHERE c.price = :price")
+    , @NamedQuery(name = "Cart.findByUnit", query = "SELECT c FROM Cart c WHERE c.unit = :unit")
+    , @NamedQuery(name = "Cart.findByCategory", query = "SELECT c FROM Cart c WHERE c.category = :category")
+    , @NamedQuery(name = "Cart.findByQuantity", query = "SELECT c FROM Cart c WHERE c.quantity = :quantity")})
 public class Cart implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -45,6 +44,10 @@ public class Cart implements Serializable {
     @Basic(optional = false)
     @Column(name = "CartID")
     private Integer cartID;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "GLID")
+    private int glid;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 32)
@@ -74,9 +77,6 @@ public class Cart implements Serializable {
     @NotNull
     @Column(name = "Quantity")
     private int quantity;
-    @JoinColumn(name = "GLID", referencedColumnName = "GLID")
-    @ManyToOne(optional = false)
-    private Goodslist glid;
 
     public Cart() {
     }
@@ -85,8 +85,9 @@ public class Cart implements Serializable {
         this.cartID = cartID;
     }
 
-    public Cart(Integer cartID, String gName, String image, BigDecimal price, String unit, String category, int quantity) {
+    public Cart(Integer cartID, int glid, String gName, String image, BigDecimal price, String unit, String category, int quantity) {
         this.cartID = cartID;
+        this.glid = glid;
         this.gName = gName;
         this.image = image;
         this.price = price;
@@ -101,6 +102,14 @@ public class Cart implements Serializable {
 
     public void setCartID(Integer cartID) {
         this.cartID = cartID;
+    }
+
+    public int getGlid() {
+        return glid;
+    }
+
+    public void setGlid(int glid) {
+        this.glid = glid;
     }
 
     public String getGName() {
@@ -149,14 +158,6 @@ public class Cart implements Serializable {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
-    }
-
-    public Goodslist getGlid() {
-        return glid;
-    }
-
-    public void setGlid(Goodslist glid) {
-        this.glid = glid;
     }
 
     @Override

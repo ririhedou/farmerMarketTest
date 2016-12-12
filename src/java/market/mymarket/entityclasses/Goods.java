@@ -1,14 +1,12 @@
 /*
- * Created by Ke Tian on 2016.12.11  * 
- * Copyright © 2016 Ke Tian. All rights reserved. * 
+ * Created by Zhen Guo on 2016.12.11  * 
+ * Copyright © 2016 Zhen Guo. All rights reserved. * 
  */
 package market.mymarket.entityclasses;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.util.Collection;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,28 +14,26 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author ketian
+ * @author ZG
  */
 @Entity
-@Table(name = "Goods")
+@Table(name = "goods")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Goods.findAll", query = "SELECT g FROM Goods g"),
-    @NamedQuery(name = "Goods.findByGid", query = "SELECT g FROM Goods g WHERE g.gid = :gid"),
-    @NamedQuery(name = "Goods.findByGName", query = "SELECT g FROM Goods g WHERE g.gName = :gName"),
-    @NamedQuery(name = "Goods.findByImage", query = "SELECT g FROM Goods g WHERE g.image = :image"),
-    @NamedQuery(name = "Goods.findByPrice", query = "SELECT g FROM Goods g WHERE g.price = :price"),
-    @NamedQuery(name = "Goods.findByUnit", query = "SELECT g FROM Goods g WHERE g.unit = :unit"),
-    @NamedQuery(name = "Goods.findByCategory", query = "SELECT g FROM Goods g WHERE g.category = :category")})
+    @NamedQuery(name = "Goods.findAll", query = "SELECT g FROM Goods g")
+    , @NamedQuery(name = "Goods.findByGid", query = "SELECT g FROM Goods g WHERE g.gid = :gid")
+    , @NamedQuery(name = "Goods.findByGName", query = "SELECT g FROM Goods g WHERE g.gName = :gName")
+    , @NamedQuery(name = "Goods.findByImage", query = "SELECT g FROM Goods g WHERE g.image = :image")
+    , @NamedQuery(name = "Goods.findByPrice", query = "SELECT g FROM Goods g WHERE g.price = :price")
+    , @NamedQuery(name = "Goods.findByUnit", query = "SELECT g FROM Goods g WHERE g.unit = :unit")
+    , @NamedQuery(name = "Goods.findByCategory", query = "SELECT g FROM Goods g WHERE g.category = :category")})
 public class Goods implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -71,8 +67,6 @@ public class Goods implements Serializable {
     @Size(min = 1, max = 16)
     @Column(name = "Category")
     private String category;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "gid")
-    private Collection<Goodslist> goodsListCollection;
 
     public Goods() {
     }
@@ -136,15 +130,6 @@ public class Goods implements Serializable {
 
     public void setCategory(String category) {
         this.category = category;
-    }
-
-    @XmlTransient
-    public Collection<Goodslist> getGoodsListCollection() {
-        return goodsListCollection;
-    }
-
-    public void setGoodsListCollection(Collection<Goodslist> goodsListCollection) {
-        this.goodsListCollection = goodsListCollection;
     }
 
     @Override

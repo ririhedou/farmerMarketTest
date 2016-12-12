@@ -20,9 +20,9 @@ Copyright © 2016 Zhen Guo. All rights reserved.
     <h:outputLabel class="heading" value="#{goodslistController.searchID} X-axis"/>
     <br/><br/>
 
-    <p:dataTable var="car" value="#{goodslistController.searchItems}">
+    <p:dataTable var="item" value="#{goodslistController.searchItems}">
         <p:column headerText="Id">
-            <h:outputText value="#{goodslistController.searchID}" />
+            <h:outputText value="#{item.price}" />
         </p:column>
     </p:dataTable>   
 

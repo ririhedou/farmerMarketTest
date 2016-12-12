@@ -40,7 +40,7 @@ public class GoodslistController implements Serializable {
     -------------------------------
      */
     // searchID refers to FMID for searching all 
-    private Integer searchID;
+    private String searchID;
 
     /*
     ejbFacade is a reference (pointer) to an object that belongs to the GoodslistFacade class. 
@@ -71,11 +71,11 @@ public class GoodslistController implements Serializable {
     Getter and Setter Methods
     -------------------------
      */
-    public Integer getSearchID() {
+    public String getSearchID() {
         return searchID;
     }
 
-    public void setSearchID(Integer searchID) {
+    public void setSearchID(String searchID) {
         this.searchID = searchID;
     }
     
@@ -226,12 +226,11 @@ public class GoodslistController implements Serializable {
         // Farmer's Market ID equals to FarmController.selected.fmid
         return getFacade().fmidQuery(searchID);
     }
-     
     
     /**
-     * @SessionScoped enables to preserve the values of the instance variables for the SearchResults.xhtml page to access.
+     * @SessionScoped enables to preserve the values of the instance variables for the GoodsList.xhtml page to access.
      *
-     * @param actionEvent refers to clicking the Submit button
+     * @param actionEvent refers to clicking the Buy button
      * @throws IOException if the page to be redirected to cannot be found
      */
     public void search(ActionEvent actionEvent) throws IOException {
