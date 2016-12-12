@@ -57,10 +57,10 @@ function initializeMap() {
 
     // Obtain the selected VT building's Latitude value from the hidden input element with id="buildingLat" in ShowOnMap.xhtml 
     //document.getElementById("Lat").value document.getElementById("Long").value
-    var buildingLatitude = document.getElementById("Lat").value;
+    var buildingLatitude = "37.2803308";//document.getElementById("Lat").value;
 
     // Obtain the selected VT building's Longitude value from the hidden input element with id="buildingLong" in ShowOnMap.xhtml
-    var buildingLongitude = "-80";
+    var buildingLongitude = "-79.8988910";// document.getElementById("Long").value;
     // Instantiate a new pin marker and dress it up with the selected VT building's properties
 
     var buildingLatLong = new google.maps.LatLng(buildingLatitude, buildingLongitude);
@@ -105,7 +105,7 @@ function displaySingleBuilding() {
     // Determine the geolocation of the selected VT building
     // var buildingLatLong = new google.maps.LatLng(buildingLatitude, buildingLongitude);
     var buildingName = "hello";
-    var buildingLatLong = new google.maps.LatLng(37, -80);
+    var buildingLatLong = new google.maps.LatLng(buildingLatitude.toLocaleString(), buildingLongitude.toLocaleString());
 
     // Set the center of the map to the geolocation coordinates of the selected VT building
     map.setCenter(buildingLatLong);

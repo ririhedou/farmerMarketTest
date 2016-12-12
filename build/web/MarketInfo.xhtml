@@ -11,10 +11,13 @@ Copyright © 2016 Zhen Guo. All rights reserved.
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
+
     <!-- Do not enter tags before the composition line since they are ignored by JSF -->
 
     <!-- This page is constructed based on the siteTemplate -->
     <ui:composition template="/template/siteTemplate.xhtml">
+
+
         <ui:define name="title">
             <!-- Set the page title -->
             <h:outputText value="Farm Info"></h:outputText>
@@ -24,10 +27,6 @@ Copyright © 2016 Zhen Guo. All rights reserved.
         <ui:define name="editableContent">
 
             <div align="center">
-
-                <!-- Error messages will be shown here if any  -->
-                <p:messages id="msgs" showIcon="false"/>
-                <h:outputLabel id="form-error-message" class="errorMessages" value="Farm Information"/>
 
                 <h:form>
                     <div class="farmInfo">
@@ -55,9 +54,8 @@ Copyright © 2016 Zhen Guo. All rights reserved.
                         <br/>
                     </div>
 
-                    
-                    <p:graphicImage id="keimg" name="images/galleriaPhotos/photo1.jpg" alt="Image Description" 
-                                    title="Delicious PizzaHut Pizzas!"/>
+
+                    <img id="keimg" src="resources/images/galleriaPhotos/photo1.jpg" width="500px" height="313px" alt="Image Descr"/>
 
                     <br/>
                     <br/>
@@ -65,6 +63,11 @@ Copyright © 2016 Zhen Guo. All rights reserved.
                     <h:commandLink action="ShowOnMap.xhtml?faces-redirect=true" disabled="#{empty farmController.selected}">
                         <i class="fa fa-map"></i>&nbsp;Show on Map
                     </h:commandLink>
+
+                    <script type="text/javascript">
+                        var randomnumber = Math.floor(Math.random() * 12) +1;
+                        document.getElementById("keimg").src = "resources/images/galleriaPhotos/photo"+randomnumber.toString()+".jpg";// + randomnumber + ".jpg";
+                    </script>
                 </h:form>
 
                 <p:inputText id="keyword" value="#{goodslistController.setSearchID(1002815)}" 
@@ -81,12 +84,7 @@ Copyright © 2016 Zhen Guo. All rights reserved.
 
             </div>
 
-            <script  type="text/javascript">
-                function changepic() {
-                    var randomnumber = 2;//Math.floor(Math.random() * 10) +1;
-                    document.getElementById("keimg").name = "images/galleriaPhotos/photo" + randomnumber + ".jpg";
-                }
-            </script>
+
 
         </ui:define>
 
