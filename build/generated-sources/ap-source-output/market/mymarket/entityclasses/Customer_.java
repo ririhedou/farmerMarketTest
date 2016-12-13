@@ -6,7 +6,7 @@ import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 import market.mymarket.entityclasses.Photo;
 
-@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2016-12-12T21:52:39")
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2016-12-13T12:47:02")
 @StaticMetamodel(Customer.class)
 public class Customer_ { 
 
