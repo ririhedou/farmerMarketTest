@@ -33,62 +33,55 @@ Map to locate the farmer. Ke tian
                         var res1 = selectedGoods.toString().split('  ');
                         var res = res1.filter(function(elem, index, self) {
                         return index == self.indexOf(elem);
-                        })
+                        });
                         console.log(res);
                         var text = ""; //alert(res.toString());
                         var i;
                         for (i = 0; i &lt; res.length; i++) {
                         document.write('<li>Item: ' + i + ', ID is: '+res[i]+'<br/>');
                         document.write('<img src="resources/images/farmgoods/goods' + res[i] + '.jpg" height="120px"/>');
-                        document.write(' <form> Quantity: <br/> <input type="text" name="firstname" placeholder="1"> </input> </form> </li>');
+                        document.write(' <form> Quantity: <br/> <input id="text'+res[i]+'" type="text" name="firstname" placeholder="1"> </input> </form> </li>');
                         }
                         }
                     </script>
                 </ul> 
                 <h:panelGrid columns="2" style="float:left">
                     <button style="height:50px;width:200px" onclick="deleteCart()">Clear products</button>
-                    <button style="height:50px;width:200px" >Check Out products</button>
+                    <button style="height:50px;width:200px" onclick="checkout()" >Check Out products</button>
                 </h:panelGrid>
 
 
                 <script >
-                    function display()
+                    function checkout()
                     {
-                    var selectedGoods = localStorage.getItem('cart');
-                    if (selectedGoods)
-                    {
-                    //alert("hello world "+ selectedGoods);
-
-                    var res = selectedGoods.toString().split('  ');
-                    alert("hello world " + res.length);
-                    console.log(res);
-                    var text = ""; //alert(res.toString());
-                    var i;
-                    for (i = 0; i &lt; res.length; i++) {
-                    text += "The number is " + i + "<br/>";
-                    }
-                    document.getElementById("demo").innerHTML = text;
-                    } else {
-                    //alert("No items in Cart");
-                    }
-
+                        
+                        var selectedGoods = localStorage.getItem('cart');
+                        if (selectedGoods)
+                        {
+                        //alert("hello world "+ selectedGoods);
+                        var res1 = selectedGoods.toString().split('  ');
+                        var res = res1.filter(function(elem, index, self) {
+                        return index == self.indexOf(elem);
+                        });
+                       
+                        var text = 'You bought these items\n'; //alert(res.toString());
+                        var i;
+                        
+                        for (i = 0; i &lt; res.length; i++) {
+                            
+                                  text = text + 'Item: '+res[i]+ ' with Quantity: ';
+                                  var j= document.getElementById('text'+res[i]).value;
+                                  text = text + j + ' \n';
+                        }
+                        alert(text);
+                        }
                     }
                     function deleteCart()
                     {
                     localStorage.removeItem('cart');
                     alert("you delete the cart items, please continue shopping~");
                     window.location.reload();
-                    }
-                    function showSummary()
-                    {
-                    var selectedGoods = localStorage.getItem('cart');
-                    if (selectedGoods)
-                    {
-                    alert("Cart Summary: " + selectedGoods.toString());
-                    } else {
-                    alert("No items in Cart");
-                    }
-                    }
+                    }                
                 </script>
 
             </div>
