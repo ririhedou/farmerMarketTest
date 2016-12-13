@@ -24,10 +24,32 @@ Map to locate the farmer. Ke tian
 
         <ui:define name="editableContent" >
             <!-- Create the content for this page below -->
-
+            <div align="left" style="width:97%">
             <h:outputText value="Check Out after Shopping:" />
-            <p id="demo">hello</p>
-            <button  onclick="display()">button</button>
+            <p id="demo">The items in the shopping list:</p>
+            <ul border="1">
+                <script language="javascript" type="text/javascript">
+                    var selectedGoods = localStorage.getItem('cart');
+                    if (selectedGoods)
+                    {
+                        //alert("hello world "+ selectedGoods);
+                        var res = selectedGoods.toString().split('  ');
+                        console.log(res);
+                        var text = "";//alert(res.toString());
+                        var i;
+                        for (i = 0; i &lt; res.length; i++) {
+                            document.write('<li>Item: ' + i + ' is: <br/>');
+                            document.write( '<img src="resources/images/farmgoods/goods'+res[i]+'.jpg" height="120px"/>');
+                            document.write(' <form> Quantity: <br/> <input type="text" name="firstname"> </input> </form> </li>');
+                        }
+                    } 
+                </script>
+            </ul> 
+            <h:panelGrid columns="2" style="float:left">
+                <button style="height:50px;width:200px" onclick="deleteCart()">Clear products</button>
+                <button style="height:50px;width:200px" >Check Out products</button>
+            </h:panelGrid>
+            
 
             <script >
                 function display()
@@ -38,7 +60,7 @@ Map to locate the farmer. Ke tian
                         //alert("hello world "+ selectedGoods);
 
                         var res = selectedGoods.toString().split('  ');
-                        alert("hello world "+ res.length);
+                        alert("hello world " + res.length);
                         console.log(res);
                         var text = "";//alert(res.toString());
                         var i;
@@ -68,6 +90,8 @@ Map to locate the farmer. Ke tian
                     }
                 }
             </script>
+            
+            </div>
         </ui:define>
         <!-- Do not enter tags after the composition line since they are ignored by JSF -->
     </ui:composition>
