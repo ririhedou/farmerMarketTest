@@ -33,47 +33,47 @@ ke added thr js function
                 -->
                 <h:outputText value="#{item.marketName}" />
                 <!--h:form id="form"-->
-                    <h:outputLabel class="heading" value="Farmer FMID: #{goodslistController.searchID}&nbsp;&nbsp;&nbsp;&nbsp;"/>
-                    <br/>
-                    <p:button  onclick="showSummary()" value="Cart Summary &nbsp;" icon="ui-icon-star"></p:button>
-                    
-                    <p:button  onclick="deleteCart()" value="Delete Cart &nbsp;" icon="ui-icon-star"></p:button>
-                    
-                    <h:link outcome="CheckOut"><i class="fa fa-arrow-right"></i>&nbsp;CheckOut&nbsp;&nbsp;</h:link>
-                    <br/>
-                    <br/>
+                <h:outputLabel class="heading" value="Farmer FMID: #{goodslistController.searchID}&nbsp;&nbsp;&nbsp;&nbsp;"/>
+                <br/>
+                <p:button  onclick="showSummary()" value="Cart Summary &nbsp;" icon="ui-icon-star"></p:button>
 
-                    <p:dataGrid var="item" value="#{goodslistController.searchItems}" columns="3" layout="grid"
-                                rows="10" paginator="true" id="products"  rowsPerPageTemplate="20,30,40,50" >
+                <p:button  onclick="deleteCart()" value="Delete Cart &nbsp;" icon="ui-icon-star"></p:button>
 
-                        <f:facet name="header">
-                            Products Available in the Farm 
-                        </f:facet>
+                <h:link outcome="CheckOut"><i class="fa fa-arrow-right"></i>&nbsp;CheckOut&nbsp;&nbsp;</h:link>
+                <br/>
+                <br/>
 
-                        <p:panel header="Item: #{item.gid}" style="text-align:center">
+                <p:dataGrid var="item" value="#{goodslistController.searchItems}" columns="3" layout="grid"
+                            rows="10" paginator="true" id="products"  rowsPerPageTemplate="20,30,40,50" >
 
-                            <h:panelGrid style="width:100%;margin-left: 20px">
+                    <f:facet name="header">
+                        Products Available in the Farm 
+                    </f:facet>
 
-                                <h:panelGrid columns="2" style="float:left">
-                                    <h:graphicImage name="/images/farmgoods/goods#{item.gid}.jpg" height="120px" style="float:left"/>
+                    <p:panel header="Item: #{item.gid}" style="text-align:center">
 
-                                    <h:panelGrid  columns="1" style="float:left">
-                                        <h:outputText value="Name: #{item.GName}" />
-                                        <h:outputText value="Price: $#{item.price}"/>
-                                        <h:outputText value="Category: #{item.category}"/>
-                                        <h:outputText value="Unit: #{item.unit}"/>
-                                        <p:button icon="ui-icon-star" value="Add to cart" onclick="addGoods(#{item.gid})"></p:button>    
+                        <h:panelGrid style="width:100%;margin-left: 20px">
 
-                                    </h:panelGrid>
-                                    <!--p:selectBooleanCheckbox value="#{selectBooleanView.value1}" /-->
+                            <h:panelGrid columns="2" style="float:left">
+                                <h:graphicImage name="/images/farmgoods/goods#{item.gid}.jpg" height="120px" style="float:left"/>
+
+                                <h:panelGrid  columns="1" style="float:left">
+                                    <h:outputText value="Name: #{item.GName}" />
+                                    <h:outputText value="Price: $#{item.price}"/>
+                                    <h:outputText value="Category: #{item.category}"/>
+                                    <h:outputText value="Unit: #{item.unit}"/>
+                                    <p:button icon="ui-icon-star" value="Add to cart" onclick="addGoods(#{item.gid})"></p:button>    
+
                                 </h:panelGrid>
-
-
-
+                                <!--p:selectBooleanCheckbox value="#{selectBooleanView.value1}" /-->
                             </h:panelGrid>
-                        </p:panel>
 
-                    </p:dataGrid> 
+
+
+                        </h:panelGrid>
+                    </p:panel>
+
+                </p:dataGrid> 
                 <!--/h:form-->
                 <script type="text/javascript">
                     function addGoods(item)
@@ -81,18 +81,17 @@ ke added thr js function
                         var selectedGoods = localStorage.getItem('cart');
                         if (selectedGoods)
                         {
-                          selectedGoods = selectedGoods + "  " + item.toString();   
-                          localStorage.setItem('cart',selectedGoods);
-                          
-                        }
-                        else
+                            selectedGoods = selectedGoods + "  " + item.toString();
+                            localStorage.setItem('cart', selectedGoods);
+
+                        } else
                         {
                             selectedGoods = item.toString();
-                            localStorage.setItem('cart',selectedGoods);
+                            localStorage.setItem('cart', selectedGoods);
                         }
-                        
+
                         alert("You add this item ID: " + item.toString() + " to the Cart");
-                        
+
                     }
                     function deleteCart()
                     {
@@ -102,7 +101,12 @@ ke added thr js function
                     function showSummary()
                     {
                         var selectedGoods = localStorage.getItem('cart');
-                        alert("Cart Summary: " +selectedGoods.toString());
+                        if (selectedGoods)
+                        {
+                            alert("Cart Summary: " + selectedGoods.toString());
+                        } else {
+                            alert("No items in Cart");
+                        }
                     }
                 </script>
             </div>

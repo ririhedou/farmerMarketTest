@@ -9,22 +9,49 @@ Map to locate the farmer. Ke tian
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:p="http://primefaces.org/ui">
 
-    <!-- Do not enter tags before the composition line since they are ignored by JSF -->
 
-    <!-- This page is constructed based on the siteTemplate -->
-    <ui:composition  template="/template/siteTemplate.xhtml">
+
+
+
+    <!-- Do not enter tags before the composition line since they are ignored by JSF -->
+    <ui:composition template="template/siteTemplate.xhtml">
+        <!--ui:composition  template="/template/siteTemplate.xhtml"-->
+
         <ui:define name="title">
             <!-- Set the page title -->
             <h:outputText value="Map"></h:outputText>
         </ui:define>
 
-
-        <!-- Create the content for this page below -->
         <ui:define name="editableContent" >
+            <!-- Create the content for this page below -->
+
             <h:outputText value="Check Out after Shopping:" />
-            
-            <script type="text/javascript">
-                
+            <p id="demo">hello</p>
+            <button  onclick="display()">button</button>
+
+            <script >
+                function display()
+                {
+                    var selectedGoods = localStorage.getItem('cart');
+                    if (selectedGoods)
+                    {
+                        //alert("hello world "+ selectedGoods);
+
+                        var res = selectedGoods.toString().split('  ');
+                        alert("hello world "+ res.length);
+                        console.log(res);
+                        var text = "";//alert(res.toString());
+                        var i;
+                        for (i = 0; i &lt; res.length; i++) {
+                            text += "The number is " + i + "<br/>";
+                        }
+                        document.getElementById("demo").innerHTML = text;
+
+                    } else {
+                        //alert("No items in Cart");
+                    }
+
+                }
                 function deleteCart()
                 {
                     localStorage.removeItem('cart');
@@ -33,13 +60,16 @@ Map to locate the farmer. Ke tian
                 function showSummary()
                 {
                     var selectedGoods = localStorage.getItem('cart');
-                    alert("Cart Summary: " + selectedGoods.toString());
+                    if (selectedGoods)
+                    {
+                        alert("Cart Summary: " + selectedGoods.toString());
+                    } else {
+                        alert("No items in Cart");
+                    }
                 }
             </script>
         </ui:define>
-
+        <!-- Do not enter tags after the composition line since they are ignored by JSF -->
     </ui:composition>
-    <!-- Do not enter tags after the composition line since they are ignored by JSF -->
-
 </html>
 
