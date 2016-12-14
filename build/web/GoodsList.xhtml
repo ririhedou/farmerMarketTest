@@ -33,17 +33,18 @@ ke added thr js function
                 -->
                 <h:outputText value="#{item.marketName}" />
                 <!--h:form id="form"-->
-                <h:outputLabel class="heading" value="Farmer FMID: #{goodslistController.searchID}&nbsp;&nbsp;&nbsp;&nbsp;"/>
+                <h:outputLabel class="heading" value="Welcome to&nbsp;#{farmgoodsManager.selected.marketName}&nbsp;&nbsp;&nbsp;&nbsp;"/>
                 <br/>
                 <p:button  onclick="showSummary()" value="Cart Summary &nbsp;" icon="ui-icon-star"></p:button>
 
-                <p:button  onclick="deleteCart()" value="Delete Cart &nbsp;" icon="ui-icon-star"></p:button>
-
-                <h:link outcome="CheckOut"><i class="fa fa-arrow-right"></i>&nbsp;CheckOut&nbsp;&nbsp;</h:link>
+                <p:button  onclick="deleteCart()" value=" Cart &nbsp;" icon="ui-icon-star"></p:button>
+                
+                <p:button  outcome="CheckOut" value="CheckOut" icon="ui-icon-star"></p:button>
+                <!--<h:link outcome="CheckOut"><i class="fa fa-arrow-right"></i>&nbsp;CheckOut&nbsp;&nbsp;</h:link>-->
                 <br/>
                 <br/>
 
-                <p:dataGrid var="item" value="#{goodslistController.searchItems}" columns="3" layout="grid"
+                <p:dataGrid var="item" value="#{farmgoodsManager.searchItems}" columns="3" layout="grid"
                             rows="10" paginator="true" id="products"  rowsPerPageTemplate="20,30,40,50" >
 
                     <f:facet name="header">

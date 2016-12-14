@@ -1,6 +1,6 @@
 /*
- * Created by Zhen Guo on 2016.12.11  * 
- * Copyright © 2016 Zhen Guo. All rights reserved. * 
+ * Created by Ke Tian on 2016.12.14  * 
+ * Copyright © 2016 Ke Tian. All rights reserved. * 
  */
 package market.mymarket.entityclasses;
 
@@ -21,19 +21,19 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author ZG
+ * @author ketian
  */
 @Entity
 @Table(name = "goods")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Goods.findAll", query = "SELECT g FROM Goods g")
-    , @NamedQuery(name = "Goods.findByGid", query = "SELECT g FROM Goods g WHERE g.gid = :gid")
-    , @NamedQuery(name = "Goods.findByGName", query = "SELECT g FROM Goods g WHERE g.gName = :gName")
-    , @NamedQuery(name = "Goods.findByImage", query = "SELECT g FROM Goods g WHERE g.image = :image")
-    , @NamedQuery(name = "Goods.findByPrice", query = "SELECT g FROM Goods g WHERE g.price = :price")
-    , @NamedQuery(name = "Goods.findByUnit", query = "SELECT g FROM Goods g WHERE g.unit = :unit")
-    , @NamedQuery(name = "Goods.findByCategory", query = "SELECT g FROM Goods g WHERE g.category = :category")})
+    @NamedQuery(name = "Goods.findAll", query = "SELECT g FROM Goods g"),
+    @NamedQuery(name = "Goods.findByGid", query = "SELECT g FROM Goods g WHERE g.gid = :gid"),
+    @NamedQuery(name = "Goods.findByGName", query = "SELECT g FROM Goods g WHERE g.gName = :gName"),
+    @NamedQuery(name = "Goods.findByImage", query = "SELECT g FROM Goods g WHERE g.image = :image"),
+    @NamedQuery(name = "Goods.findByPrice", query = "SELECT g FROM Goods g WHERE g.price = :price"),
+    @NamedQuery(name = "Goods.findByUnit", query = "SELECT g FROM Goods g WHERE g.unit = :unit"),
+    @NamedQuery(name = "Goods.findByCategory", query = "SELECT g FROM Goods g WHERE g.category = :category")})
 public class Goods implements Serializable {
 
     private static final long serialVersionUID = 1L;

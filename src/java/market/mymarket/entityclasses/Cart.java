@@ -1,6 +1,6 @@
 /*
- * Created by Zhen Guo on 2016.12.11  * 
- * Copyright © 2016 Zhen Guo. All rights reserved. * 
+ * Created by Ke Tian on 2016.12.14  * 
+ * Copyright © 2016 Ke Tian. All rights reserved. * 
  */
 package market.mymarket.entityclasses;
 
@@ -21,21 +21,21 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author ZG
+ * @author ketian
  */
 @Entity
 @Table(name = "cart")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Cart.findAll", query = "SELECT c FROM Cart c")
-    , @NamedQuery(name = "Cart.findByCartID", query = "SELECT c FROM Cart c WHERE c.cartID = :cartID")
-    , @NamedQuery(name = "Cart.findByGlid", query = "SELECT c FROM Cart c WHERE c.glid = :glid")
-    , @NamedQuery(name = "Cart.findByGName", query = "SELECT c FROM Cart c WHERE c.gName = :gName")
-    , @NamedQuery(name = "Cart.findByImage", query = "SELECT c FROM Cart c WHERE c.image = :image")
-    , @NamedQuery(name = "Cart.findByPrice", query = "SELECT c FROM Cart c WHERE c.price = :price")
-    , @NamedQuery(name = "Cart.findByUnit", query = "SELECT c FROM Cart c WHERE c.unit = :unit")
-    , @NamedQuery(name = "Cart.findByCategory", query = "SELECT c FROM Cart c WHERE c.category = :category")
-    , @NamedQuery(name = "Cart.findByQuantity", query = "SELECT c FROM Cart c WHERE c.quantity = :quantity")})
+    @NamedQuery(name = "Cart.findAll", query = "SELECT c FROM Cart c"),
+    @NamedQuery(name = "Cart.findByCartID", query = "SELECT c FROM Cart c WHERE c.cartID = :cartID"),
+    @NamedQuery(name = "Cart.findByGlid", query = "SELECT c FROM Cart c WHERE c.glid = :glid"),
+    @NamedQuery(name = "Cart.findByGName", query = "SELECT c FROM Cart c WHERE c.gName = :gName"),
+    @NamedQuery(name = "Cart.findByImage", query = "SELECT c FROM Cart c WHERE c.image = :image"),
+    @NamedQuery(name = "Cart.findByPrice", query = "SELECT c FROM Cart c WHERE c.price = :price"),
+    @NamedQuery(name = "Cart.findByUnit", query = "SELECT c FROM Cart c WHERE c.unit = :unit"),
+    @NamedQuery(name = "Cart.findByCategory", query = "SELECT c FROM Cart c WHERE c.category = :category"),
+    @NamedQuery(name = "Cart.findByQuantity", query = "SELECT c FROM Cart c WHERE c.quantity = :quantity")})
 public class Cart implements Serializable {
 
     private static final long serialVersionUID = 1L;

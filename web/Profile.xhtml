@@ -8,7 +8,8 @@ Copyright © 2016 Zhen Guo. All rights reserved.
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
     <!-- Do not enter tags before the composition line since they are ignored by JSF -->
 
@@ -80,7 +81,7 @@ Copyright © 2016 Zhen Guo. All rights reserved.
                     <!-- ****************** Delete Account End **************************** -->
 
                     <br /><br />
-                    <h:button styleClass="button" outcome="PrepareOrder" value="Start Your Order" />
+                    <h:button styleClass="button" outcome="FarmersMarkets" value="Browse Markets" />
                     <br /><br />
                     <h:panelGroup id="display">
                         <p:panelGrid columns="2" rendered="#{accountManager.selected != null}" columnClasses="columnOne, columnTwo" >

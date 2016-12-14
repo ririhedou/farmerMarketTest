@@ -24,7 +24,7 @@ Copyright © 2016 Zhen Guo. All rights reserved.
     requests for certain resources from outside their own docroot"
     See page C-46 in [https://glassfish.java.net/docs/4.0/application-deployment-guide.pdf]
   -->
-  <property name="alternatedocroot_1" value="from=/Users/Team3-FileStorageLocation/* dir=/"/>
+  <property name="alternatedocroot_1" value="from=/Team3-FileStorageLocation/* dir=/Users/"/>
   <!--<property name="alternatedocroot_1" value="from=/Team3-FileStorageLocation/* dir=/home/cloudsd/"/>-->
 </glassfish-web-app>
 

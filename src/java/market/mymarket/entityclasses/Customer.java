@@ -1,6 +1,6 @@
 /*
- * Created by Zhen Guo on 2016.12.10  * 
- * Copyright © 2016 Zhen Guo. All rights reserved. * 
+ * Created by Ke Tian on 2016.12.14  * 
+ * Copyright © 2016 Ke Tian. All rights reserved. * 
  */
 package market.mymarket.entityclasses;
 
@@ -23,14 +23,10 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Zhen
+ * @author ketian
  */
-// The @Entity annotation designates this class as a JPA Entity POJO class representing the Customer table in the PizzaHutDB database.
 @Entity
-
-// Name of the PizzaHutDB database table represented
-@Table(name = "Customer")
-
+@Table(name = "customer")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Customer.findAll", query = "SELECT c FROM Customer c"),
@@ -51,15 +47,8 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Customer.findBySecurityQuestion", query = "SELECT c FROM Customer c WHERE c.securityQuestion = :securityQuestion"),
     @NamedQuery(name = "Customer.findBySecurityAnswer", query = "SELECT c FROM Customer c WHERE c.securityAnswer = :securityAnswer"),
     @NamedQuery(name = "Customer.findByEmail", query = "SELECT c FROM Customer c WHERE c.email = :email")})
-
 public class Customer implements Serializable {
 
-    /*
-    ========================================================
-    Instance variables representing the attributes (columns)
-    of the Customer table in the PizzaHutDB database.
-    ========================================================
-     */
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -73,7 +62,7 @@ public class Customer implements Serializable {
     private String username;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 64)
+    @Size(min = 1, max = 32)
     @Column(name = "password")
     private String password;
     @Basic(optional = false)
@@ -124,7 +113,7 @@ public class Customer implements Serializable {
     private String state;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 5, max = 10)
+    @Size(min = 1, max = 10)
     @Column(name = "zipcode")
     private String zipcode;
     @Basic(optional = false)
@@ -145,12 +134,6 @@ public class Customer implements Serializable {
     @OneToMany(mappedBy = "customerId")
     private Collection<Photo> photoCollection;
 
-    /*
-    =================================================================
-    Class constructors for instantiating a Customer entity object to
-    represent a row in the Customer table in the PizzaHutDB database.
-    =================================================================
-     */
     public Customer() {
     }
 
@@ -158,18 +141,16 @@ public class Customer implements Serializable {
         this.id = id;
     }
 
-    public Customer(Integer id, String username, String password, String firstName, String middleName, String lastName, String ccNumber, String ccExpires, String ccSecurityCode, String address1, String address2, String city, String state, String zipcode, int securityQuestion, String securityAnswer, String email) {
+    public Customer(Integer id, String username, String password, String firstName, String lastName, String ccNumber, String ccExpires, String ccSecurityCode, String address1, String city, String state, String zipcode, int securityQuestion, String securityAnswer, String email) {
         this.id = id;
         this.username = username;
         this.password = password;
         this.firstName = firstName;
-        this.middleName = middleName;
         this.lastName = lastName;
         this.ccNumber = ccNumber;
         this.ccExpires = ccExpires;
         this.ccSecurityCode = ccSecurityCode;
         this.address1 = address1;
-        this.address2 = address2;
         this.city = city;
         this.state = state;
         this.zipcode = zipcode;
@@ -178,12 +159,6 @@ public class Customer implements Serializable {
         this.email = email;
     }
 
-    /*
-    ========================================================
-    Getter and Setter methods for the attributes (columns)
-    of the Customer table in the PizzaHutDB database.
-    ========================================================
-     */
     public Integer getId() {
         return id;
     }
@@ -320,8 +295,6 @@ public class Customer implements Serializable {
         this.email = email;
     }
 
-    // The @XmlTransient annotation is used to resolve potential name collisions
-    // between a JavaBean property name and a field name.
     @XmlTransient
     public Collection<Photo> getPhotoCollection() {
         return photoCollection;
@@ -331,9 +304,6 @@ public class Customer implements Serializable {
         this.photoCollection = photoCollection;
     }
 
-    /**
-     * @return Generates and returns a hash code value for the object with id
-     */
     @Override
     public int hashCode() {
         int hash = 0;
@@ -341,12 +311,6 @@ public class Customer implements Serializable {
         return hash;
     }
 
-    /**
-     * Checks if the Customer object identified by 'object' is the same as the Customer object identified by 'id'
-     *
-     * @param object The Customer object identified by 'object'
-     * @return True if the Customer 'object' and 'id' are the same; otherwise, return False
-     */
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
@@ -360,22 +324,9 @@ public class Customer implements Serializable {
         return true;
     }
 
-    /**
-     * @return the String representation of a Company id
-     */
     @Override
     public String toString() {
-        return "com.mycompany.entityclasses.Customer[ id=" + id + " ]";
+        return "market.mymarket.entityclasses.Customer[ id=" + id + " ]";
     }
-
-    /**
-     * @return the last 4 digits of the customer's credit card number
-     */
-    public String ccNumberLast4Digits() {
-        // Return the substring from the 12th character to the last character.
-        // Credit card number is 16 digits long going from position 0 to 15.
-        // Positions: 0123456789012345 --> 2345 Last 4 digits.
-        return getCcNumber().substring(12);
-    }
-
+    
 }

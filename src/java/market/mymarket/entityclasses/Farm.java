@@ -1,6 +1,6 @@
 /*
- * Created by Zhen Guo on 2016.12.11  * 
- * Copyright © 2016 Zhen Guo. All rights reserved. * 
+ * Created by Ke Tian on 2016.12.14  * 
+ * Copyright © 2016 Ke Tian. All rights reserved. * 
  */
 package market.mymarket.entityclasses;
 
@@ -19,36 +19,36 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author ZG
+ * @author ketian
  */
 @Entity
 @Table(name = "farm")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Farm.findAll", query = "SELECT f FROM Farm f")
-    , @NamedQuery(name = "Farm.findByFmid", query = "SELECT f FROM Farm f WHERE f.fmid = :fmid")
-    , @NamedQuery(name = "Farm.findByMarketName", query = "SELECT f FROM Farm f WHERE f.marketName = :marketName")
-    , @NamedQuery(name = "Farm.findByWebsite", query = "SELECT f FROM Farm f WHERE f.website = :website")
-    , @NamedQuery(name = "Farm.findByFacebook", query = "SELECT f FROM Farm f WHERE f.facebook = :facebook")
-    , @NamedQuery(name = "Farm.findByStreet", query = "SELECT f FROM Farm f WHERE f.street = :street")
-    , @NamedQuery(name = "Farm.findByCity", query = "SELECT f FROM Farm f WHERE f.city = :city")
-    , @NamedQuery(name = "Farm.findByState", query = "SELECT f FROM Farm f WHERE f.state = :state")
-    , @NamedQuery(name = "Farm.findByZip", query = "SELECT f FROM Farm f WHERE f.zip = :zip")
-    , @NamedQuery(name = "Farm.findBySeason1Date", query = "SELECT f FROM Farm f WHERE f.season1Date = :season1Date")
-    , @NamedQuery(name = "Farm.findBySeason1Time", query = "SELECT f FROM Farm f WHERE f.season1Time = :season1Time")
-    , @NamedQuery(name = "Farm.findBySeason2Date", query = "SELECT f FROM Farm f WHERE f.season2Date = :season2Date")
-    , @NamedQuery(name = "Farm.findBySeason2Time", query = "SELECT f FROM Farm f WHERE f.season2Time = :season2Time")
-    , @NamedQuery(name = "Farm.findBySeason3Date", query = "SELECT f FROM Farm f WHERE f.season3Date = :season3Date")
-    , @NamedQuery(name = "Farm.findBySeason3Time", query = "SELECT f FROM Farm f WHERE f.season3Time = :season3Time")
-    , @NamedQuery(name = "Farm.findByX", query = "SELECT f FROM Farm f WHERE f.x = :x")
-    , @NamedQuery(name = "Farm.findByY", query = "SELECT f FROM Farm f WHERE f.y = :y")
-    , @NamedQuery(name = "Farm.findByCredit", query = "SELECT f FROM Farm f WHERE f.credit = :credit")
-    , @NamedQuery(name = "Farm.findByWic", query = "SELECT f FROM Farm f WHERE f.wic = :wic")
-    , @NamedQuery(name = "Farm.findByWICcash", query = "SELECT f FROM Farm f WHERE f.wICcash = :wICcash")
-    , @NamedQuery(name = "Farm.findBySfmnp", query = "SELECT f FROM Farm f WHERE f.sfmnp = :sfmnp")
-    , @NamedQuery(name = "Farm.findBySnap", query = "SELECT f FROM Farm f WHERE f.snap = :snap")
-    , @NamedQuery(name = "Farm.findByOrganic", query = "SELECT f FROM Farm f WHERE f.organic = :organic")
-    , @NamedQuery(name = "Farm.findByRating", query = "SELECT f FROM Farm f WHERE f.rating = :rating")})
+    @NamedQuery(name = "Farm.findAll", query = "SELECT f FROM Farm f"),
+    @NamedQuery(name = "Farm.findByFmid", query = "SELECT f FROM Farm f WHERE f.fmid = :fmid"),
+    @NamedQuery(name = "Farm.findByMarketName", query = "SELECT f FROM Farm f WHERE f.marketName = :marketName"),
+    @NamedQuery(name = "Farm.findByWebsite", query = "SELECT f FROM Farm f WHERE f.website = :website"),
+    @NamedQuery(name = "Farm.findByFacebook", query = "SELECT f FROM Farm f WHERE f.facebook = :facebook"),
+    @NamedQuery(name = "Farm.findByStreet", query = "SELECT f FROM Farm f WHERE f.street = :street"),
+    @NamedQuery(name = "Farm.findByCity", query = "SELECT f FROM Farm f WHERE f.city = :city"),
+    @NamedQuery(name = "Farm.findByState", query = "SELECT f FROM Farm f WHERE f.state = :state"),
+    @NamedQuery(name = "Farm.findByZip", query = "SELECT f FROM Farm f WHERE f.zip = :zip"),
+    @NamedQuery(name = "Farm.findBySeason1Date", query = "SELECT f FROM Farm f WHERE f.season1Date = :season1Date"),
+    @NamedQuery(name = "Farm.findBySeason1Time", query = "SELECT f FROM Farm f WHERE f.season1Time = :season1Time"),
+    @NamedQuery(name = "Farm.findBySeason2Date", query = "SELECT f FROM Farm f WHERE f.season2Date = :season2Date"),
+    @NamedQuery(name = "Farm.findBySeason2Time", query = "SELECT f FROM Farm f WHERE f.season2Time = :season2Time"),
+    @NamedQuery(name = "Farm.findBySeason3Date", query = "SELECT f FROM Farm f WHERE f.season3Date = :season3Date"),
+    @NamedQuery(name = "Farm.findBySeason3Time", query = "SELECT f FROM Farm f WHERE f.season3Time = :season3Time"),
+    @NamedQuery(name = "Farm.findByX", query = "SELECT f FROM Farm f WHERE f.x = :x"),
+    @NamedQuery(name = "Farm.findByY", query = "SELECT f FROM Farm f WHERE f.y = :y"),
+    @NamedQuery(name = "Farm.findByCredit", query = "SELECT f FROM Farm f WHERE f.credit = :credit"),
+    @NamedQuery(name = "Farm.findByWic", query = "SELECT f FROM Farm f WHERE f.wic = :wic"),
+    @NamedQuery(name = "Farm.findByWICcash", query = "SELECT f FROM Farm f WHERE f.wICcash = :wICcash"),
+    @NamedQuery(name = "Farm.findBySfmnp", query = "SELECT f FROM Farm f WHERE f.sfmnp = :sfmnp"),
+    @NamedQuery(name = "Farm.findBySnap", query = "SELECT f FROM Farm f WHERE f.snap = :snap"),
+    @NamedQuery(name = "Farm.findByOrganic", query = "SELECT f FROM Farm f WHERE f.organic = :organic"),
+    @NamedQuery(name = "Farm.findByRating", query = "SELECT f FROM Farm f WHERE f.rating = :rating")})
 public class Farm implements Serializable {
 
     private static final long serialVersionUID = 1L;

@@ -20,13 +20,14 @@ Copyright © 2016 Zhen Guo. All rights reserved.
         <ui:define name="editableContent">
 
             <div align="center">
-                <!-- Order online if logged in; otherwise, show the Sign In page -->
+                <!-- Order online if logged in; otherwise, show the Sign In page 
                 <c:if test="#{accountManager.isLoggedIn() == true}">
-                    <h:button styleClass="button" outcome="PrepareOrder" value="Start Your Order" />
+                    <h:button styleClass="button" outcome="PrepareOrder" value="Browse Market" />
                 </c:if>
                 <c:if test="#{accountManager.isLoggedIn() == false}">
                     <h:button styleClass="button" outcome="SignIn" value="Start Your Order" />
-                </c:if>
+                </c:if>-->
+                <h:button styleClass="button" outcome="FarmersMarkets" value="Markets and Products" />
                 <br /><br />
                 <!-- 
                 ========================================
@@ -37,7 +38,7 @@ Copyright © 2016 Zhen Guo. All rights reserved.
                 -->
                 <p:galleria value="#{imagesView.images}" var="image" panelWidth="500" panelHeight="313" showCaption="false">
                     <p:graphicImage name="images/galleriaPhotos/#{image}" alt="Image Description for #{image}" 
-                                    title="Delicious PizzaHut Pizzas!"/>
+                                    title="Welcome to LocalMarkets!"/>
                 </p:galleria>
             </div>
         </ui:define>

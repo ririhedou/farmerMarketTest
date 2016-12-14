@@ -39,9 +39,9 @@ Copyright © 2016 Zhen Guo. All rights reserved.
                         http://www.primefaces.org/docs/guide/primefaces_user_guide_5_3.pdf
                         
                         The table is displayed as sorted in the order of database Primary Key (id) values.
-                        -->
-                        <p:dataTable id="datalist" value="#{farmController.items}" var="item"
-                                     selectionMode="single" selection="#{farmController.selected}"
+                        farmController-->
+                        <p:dataTable id="datalist" value="#{farmgoodsManager.items}" var="item"
+                                     selectionMode="single" selection="#{farmgoodsManager.selected}"
                                      paginator="true"
                                      rowKey="#{item.fmid}"
                                      rows="10"
@@ -121,7 +121,7 @@ Copyright © 2016 Zhen Guo. All rights reserved.
                             in alphabetical order A to Z. Clicking it again reverses the order to Z to A. -->
                             <p:column sortBy="#{item.organic}">
                                 <f:facet name="header">
-                                    <h:outputText value="#{bundle.ListFarmTitle_organic}" styleClass="facetHeader"/>
+                                    <h:outputText value="Organic Food" styleClass="facetHeader"/>
                                 </f:facet>
                                 <h:outputText styleClass="dataFields" value="#{item.organic}"/>
                             </p:column>
@@ -135,8 +135,7 @@ Copyright © 2016 Zhen Guo. All rights reserved.
                                
                                 <p:commandButton id="viewButton"  icon="ui-icon-document" value="#{bundle.View}" 
                                                  styleClass="commandButton" action ="MarketInfo.xhtml?faces-redirect=true"
-                                                 disabled="#{empty farmController.selected}">
-                                                 <!--f:setPropertyActionListener value="#{item}" target="#{farmController.selected}" /-->
+                                                 disabled="#{empty farmgoodsManager.selected}">
                                 </p:commandButton>               
                                                                  
                                 <!--<p:commandButton id="searchButton" icon="ui-icon-search" value="#{bundle.Search}" 

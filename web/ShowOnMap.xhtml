@@ -38,10 +38,10 @@ Map to locate the farmer.
                 <h:outputLabel class="heading" value="Location:"/>
                 <br/><br/>
 
-                <h:outputLabel styleClass="scrollableOutputText" value="X-axis: #{farmController.selected.x}"/>
+                <h:outputLabel styleClass="scrollableOutputText" value="X-axis: #{farmgoodsManager.selected.x}"/>
                 <br/><br/>
 
-                <h:outputLabel styleClass="scrollableOutputText"  value="Y-axis: #{farmController.selected.y}"/>
+                <h:outputLabel styleClass="scrollableOutputText"  value="Y-axis: #{farmgoodsManager.selected.y}"/>
                 <br/><br/>
                 <!--p:growl id="growl" showDetail="true" autoUpdate="true" life="4000"/-->
                 <div id="floating-panel">
@@ -56,16 +56,15 @@ Map to locate the farmer.
                 
                 <br/><br/>
                 
-                <div id="map" class="map">
-                </div>
+                <div id="map" class="map"></div>
 
                 <!-- Name, Latitude, and Longitude of the selected VT building are accessed in map.js -->
-                <h:inputHidden id="buildingName" value="#{farmController.selected.marketName}" />
-                <h:inputHidden id="Lat" value="#{farmController.selected.y}" />
-                <h:inputHidden id="Long" value="#{farmController.selected.x}" />
+                <h:inputHidden id="buildingName" value="#{farmgoodsManager.selected.marketName}" />
+                <h:inputHidden id="Lat" value="#{farmgoodsManager.selected.y}" />
+                <h:inputHidden id="Long" value="#{farmgoodsManager.selected.x}" />
 
-                    <!--p:gmap center="#{farmController.selected.y}, #{farmController.selected.x}" zoom="12" type="ROADMAP" style="width:800px;height:400px" model="#{markersView.advancedModel}">
-                    </p:gmap-->
+                    <!--p:gmap center="#{farmgoodsManager.selected.y}, #{farmgoodsManager.selected.x}" zoom="12" type="ROADMAP" style="width:800px;height:400px" model="#{markersView.advancedModel}">
+                    </p:gmap -->
                 <script type="text/javascript">
                     initializeMap();
                 </script>

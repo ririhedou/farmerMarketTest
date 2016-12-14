@@ -25,22 +25,22 @@ Copyright © 2016 Zhen Guo. All rights reserved.
             <h:panelGrid id="footerPanelGrid" columns="2" >
 
                 <h:panelGroup>
-                    <a class="social-roll" target="_blank" href="https://www.facebook.com/pizzahutus/"><img src="resources/images/socialMediaIcons/facebook.png" /></a>
-                    <a class="social-roll" target="_blank" href="https://twitter.com/pizzahut/"><img src="resources/images/socialMediaIcons/twitter.png" /></a>
-                    <a class="social-roll" target="_blank" href="https://www.youtube.com/user/pizzahut/"><img src="resources/images/socialMediaIcons/youTube.png" /></a>
+                    <a class="social-roll" target="_blank" href="https://www.facebook.com/blacksburgfarmersmarket"><img src="resources/images/socialMediaIcons/facebook.png" /></a>
+                    <a class="social-roll" target="_blank" href="https://twitter.com/burgslocalfoods"><img src="resources/images/socialMediaIcons/twitter.png" /></a>
+                    <a class="social-roll" target="_blank" href="https://www.youtube.com/"><img src="resources/images/socialMediaIcons/youTube.png" /></a>
                 </h:panelGroup>
 
                 <h:panelGroup  id="rightAlignPanelGroup">     
                     <!-- Order online if logged in; otherwise, show the Sign In page -->
                     <c:if test="#{accountManager.isLoggedIn() == true}">
-                        <h:link outcome="PrepareOrder" value="Order Online"/>
+                        <h:link outcome="PrepareOrder" value="Go to LocalMarkets"/>
                     </c:if>
                     <c:if test="#{accountManager.isLoggedIn() == false}">
-                        <h:link outcome="SignIn" value="Order Online"/>
+                        <h:link outcome="SignIn" value="Go to LocalMarkets"/>
                     </c:if>
                     &bull;
-                    <a href="https://order.pizzahut.com/site/locator">Find a Pizza Hut</a> &bull;                      
-                    <a href="https://order.pizzahut.com/site/contact_us">Contact Us</a>
+                    <a href="https://www.ams.usda.gov/local-food-directories/farmersmarkets">Find a Farmers Market</a> &bull;                      
+                    <a href="http://search.ams.usda.gov/farmersmarkets/v1/svcdesc.html">USDA API</a>
                 </h:panelGroup>
 
             </h:panelGrid>

@@ -12,12 +12,12 @@ public final class Constants {
 
     /*
     --------------------------------------------------------------------
-    Change /Users/Balci/PizzaHutStorageLocation/ below to
-    /home/CloudSD/Balci/PizzaHutStorageLocation/
-    for deployment to the server by replacing Balci with your last name.
+    Change /Users/Team3-FileStorageLocation/ below to
+    /home/CloudSD/Team3-FileStorageLocation/
+    for deployment to the server.
     --------------------------------------------------------------------
      */
-    public static final String ROOT_DIRECTORY = "/home/cloudsd/Team3-FileStorageLocation/";
+    public static final String ROOT_DIRECTORY = "/Users/Team3-FileStorageLocation/";
 
     public static final String STORAGE_DIRECTORY = "Team3-FileStorageLocation/";
 

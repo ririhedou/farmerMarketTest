@@ -1,6 +1,6 @@
 /*
- * Created by Zhen Guo on 2016.12.11  * 
- * Copyright © 2016 Zhen Guo. All rights reserved. * 
+ * Created by Ke Tian on 2016.12.14  * 
+ * Copyright © 2016 Ke Tian. All rights reserved. * 
  */
 package market.mymarket.entityclasses;
 
@@ -21,23 +21,23 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author ZG
+ * @author ketian
  */
 @Entity
 @Table(name = "goodslist")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Goodslist.findAll", query = "SELECT g FROM Goodslist g")
-    , @NamedQuery(name = "Goodslist.findByGlid", query = "SELECT g FROM Goodslist g WHERE g.glid = :glid")
-    , @NamedQuery(name = "Goodslist.findByFmid", query = "SELECT g FROM Goodslist g WHERE g.fmid = :fmid")
-    , @NamedQuery(name = "Goodslist.findByMarketName", query = "SELECT g FROM Goodslist g WHERE g.marketName = :marketName")
-    , @NamedQuery(name = "Goodslist.findByWebsite", query = "SELECT g FROM Goodslist g WHERE g.website = :website")
-    , @NamedQuery(name = "Goodslist.findByCategory", query = "SELECT g FROM Goodslist g WHERE g.category = :category")
-    , @NamedQuery(name = "Goodslist.findByGid", query = "SELECT g FROM Goodslist g WHERE g.gid = :gid")
-    , @NamedQuery(name = "Goodslist.findByGName", query = "SELECT g FROM Goodslist g WHERE g.gName = :gName")
-    , @NamedQuery(name = "Goodslist.findByImage", query = "SELECT g FROM Goodslist g WHERE g.image = :image")
-    , @NamedQuery(name = "Goodslist.findByPrice", query = "SELECT g FROM Goodslist g WHERE g.price = :price")
-    , @NamedQuery(name = "Goodslist.findByUnit", query = "SELECT g FROM Goodslist g WHERE g.unit = :unit")})
+    @NamedQuery(name = "Goodslist.findAll", query = "SELECT g FROM Goodslist g"),
+    @NamedQuery(name = "Goodslist.findByGlid", query = "SELECT g FROM Goodslist g WHERE g.glid = :glid"),
+    @NamedQuery(name = "Goodslist.findByFmid", query = "SELECT g FROM Goodslist g WHERE g.fmid = :fmid"),
+    @NamedQuery(name = "Goodslist.findByMarketName", query = "SELECT g FROM Goodslist g WHERE g.marketName = :marketName"),
+    @NamedQuery(name = "Goodslist.findByWebsite", query = "SELECT g FROM Goodslist g WHERE g.website = :website"),
+    @NamedQuery(name = "Goodslist.findByCategory", query = "SELECT g FROM Goodslist g WHERE g.category = :category"),
+    @NamedQuery(name = "Goodslist.findByGid", query = "SELECT g FROM Goodslist g WHERE g.gid = :gid"),
+    @NamedQuery(name = "Goodslist.findByGName", query = "SELECT g FROM Goodslist g WHERE g.gName = :gName"),
+    @NamedQuery(name = "Goodslist.findByImage", query = "SELECT g FROM Goodslist g WHERE g.image = :image"),
+    @NamedQuery(name = "Goodslist.findByPrice", query = "SELECT g FROM Goodslist g WHERE g.price = :price"),
+    @NamedQuery(name = "Goodslist.findByUnit", query = "SELECT g FROM Goodslist g WHERE g.unit = :unit")})
 public class Goodslist implements Serializable {
 
     private static final long serialVersionUID = 1L;

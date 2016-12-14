@@ -29,7 +29,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 
 // Name of the PizzaHutDB database table represented
-@Table(name = "Photo")
+@Table(name = "photo")
 
 @XmlRootElement
 @NamedQueries({
